@@ -39,6 +39,7 @@ We have 2 types of users on Erdata App.
 2. User2 and user1 can see children profiles and donate
 3. User1 have additional privilege to suggest a child to be helped
 
+
 **As a volunteer I want to find street kids in Ethiopia so that I can directly donate some money and  help them.**
 
 <!--Table-->
