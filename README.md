@@ -17,10 +17,10 @@ We have 2 types of users on Erdata App.
 
 <!--Table-->
 ## Collaborators
-|Name                  |ID            |Github links                             |
-|----------------------|--------------|-----------------------------------------|
-|Tesfaye Adugna        |UGR/4709/12   |[TesfayeAdugna](github.com/TesfayeAdugna)|
-|Endale Yohannes       |UGR/7379/12   |[Endalebob](github.com/Endalebob)        |
-|Kenna Tefera          |UGR/0317/12   |[Kenna-Tefera](github.com/Kenna-Tefera)  |
-|Rediet Ferew          |UGR/1415/12   |[Rediet-Ferew](github.com/Rediet-Ferew)  |
-|Abel Yohannes         |UGR/8254/12   |[ashrog](https://github.com/ashrog)      |
+|Name                  |ID            |Section |Github links                             |
+|----------------------|--------------|--------|-----------------------------------------|
+|Tesfaye Adugna        |UGR/4709/12   |2       |[TesfayeAdugna](github.com/TesfayeAdugna)|
+|Endale Yohannes       |UGR/7379/12   |2       |[Endalebob](github.com/Endalebob)        |
+|Kenna Tefera          |UGR/0317/12   |2       |[Kenna-Tefera](github.com/Kenna-Tefera)  |
+|Rediet Ferew          |UGR/1415/12   |2       |[Rediet-Ferew](github.com/Rediet-Ferew)  |
+|Abel Yohannes         |UGR/8254/12   |2       |[ashrog](https://github.com/ashrog)      |
