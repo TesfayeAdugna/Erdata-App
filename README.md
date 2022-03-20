@@ -2,18 +2,24 @@
 
 <!--Description-->
 The Erdata project is intended to facilitate humanitarian support to the street children by widening the potential help source even to foreigners (Diasporas) and making deliberation of aid far more simple, technologically supported, and attention-seeking. The system offers incredible support for anyone who is willing to take part in serving these needy children, creating the opportunity in which these street children will get a chance to enroll in school and minimize their pain.
+
+The Erdata project enables recording and storing the children’s information. Children's information includes full name, sex, age, kind of help they need, address, photos, and history. Donors can see the children’s profiles and easily help them.
+
+There will be a list of methods for help. Donate money, Donate in type, and
+adopt the child. User can choose one method in which he wants to help the
+child.
 <!--Authentication/Authorization-->
 ## Athentication/Authorization
 We have 2 types of users on Erdata App.
 1. Admin
 2. Normal Users
-    1. User1
-    2. User2
+    1. User1 - is a user which have an account
+    2. User2 - is a user which have not an account
 <!--Business features-->
 ## Business Features
 1. Admins can post children information
-2. User1 can suggest a child to be helped
-3. User2 can see children profiles and donate
+2. User2 and user1 can see children profiles and donate
+3. User1 have additional privilege to suggest a child to be helped
 
 <!--Table-->
 ## Collaborators
