@@ -1,7 +1,7 @@
 # Erdata-App
 
 <!--Description-->
-The Erdata project is intended to facilitate humanitarian support to the street children by widening the potential help source even to foreigners (Diasporas) and making deliberation of aid far more simple, technologically supported, and attention-seeking. The system offers incredible support for anyone who is willing to take part in serving these needy children, creating the opportunity in which these street children will get a chance to enroll in school and minimize their pain.
+Many volunteer Ethiopians find it diffcult to directly find citizens they are supposed to help, especially diasporas since they don't live around. The Erdata project is intended to facilitate humanitarian support to the street children by widening the potential help source even to foreigners (Diasporas) and making deliberation of aid far more simple, technologically supported, and attention-seeking. The system offers incredible support for anyone who is willing to take part in serving these needy children, creating the opportunity in which these street children will get a chance to enroll in school and minimize their pain.
 
 The Erdata project enables recording and storing the children’s information. Children's information includes full name, sex, age, kind of help they need, address, photos, and history. Donors can see the children’s profiles and easily help them.
 
@@ -20,6 +20,8 @@ We have 2 types of users on Erdata App.
 1. Admins can post children information
 2. User2 and user1 can see children profiles and donate
 3. User1 have additional privilege to suggest a child to be helped
+
+**As a volunteer I want to find street kids in Ethiopia so that I can directly donate some money and  help them.**
 
 <!--Table-->
 ## Collaborators
