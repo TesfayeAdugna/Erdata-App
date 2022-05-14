@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'child_donation.dart';
-import 'home_sample.dart';
-import 'login.dart';
-import 'login_form.dart';
-
 import 'home.dart';
 
 void main() {
@@ -22,7 +17,7 @@ class profile extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: HomePage(),
     );
   }
 }
