@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'profile.dart';
+import 'child_donation.dart';
+import 'home_sample.dart';
 
 void main() {
   runApp(const profile());
