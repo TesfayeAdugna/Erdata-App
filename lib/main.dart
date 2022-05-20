@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'forms/children_registration.dart';
+import 'forms/login.dart';
+import 'forms/user_registration.dart';
 import 'profile.dart';
 
 import 'home.dart';
@@ -18,7 +21,7 @@ class profile extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Profile(),
+      home: UserRegistrationScreen(),
     );
   }
 }
