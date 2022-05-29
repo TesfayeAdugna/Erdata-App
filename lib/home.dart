@@ -1,6 +1,8 @@
-import 'smallText.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'children.dart';
+import 'smallText.dart';
+import '../custom_widget/drawers.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -198,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            print("pressed");
+                            context.go('/user_registration');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -214,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("pressed");
+                            context.go('/user_registration');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -230,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("pressed");
+                            context.go('/user_registration');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("pressed");
+                            context.go('/user_registration');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -262,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("pressed");
+                            context.go('/user_registration');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -284,81 +286,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(25),
-                          child: Image.asset(
-                            "assets/logo3.jpg",
-                            width: 200,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Expanded(child: SizedBox()),
-                  ],
-                ),
-              ),
-              ListTile(
-                iconColor: Colors.blue,
-                selectedColor: Color.fromARGB(255, 75, 4, 167),
-                leading: Icon(Icons.home_filled),
-                title: Text("HOME"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                iconColor: Colors.blue,
-                selectedColor: Color.fromARGB(255, 75, 4, 167),
-                leading: Icon(Icons.money),
-                title: Text("DONATE"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                iconColor: Colors.blue,
-                selectedColor: Color.fromARGB(255, 75, 4, 167),
-                leading: Icon(Icons.people),
-                title: Text("ABOUT"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                iconColor: Colors.blue,
-                selectedColor: Color.fromARGB(255, 75, 4, 167),
-                leading: Icon(Icons.checklist),
-                title: Text("CHILDREN LIST"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                iconColor: Colors.blue,
-                selectedColor: Color.fromARGB(255, 75, 4, 167),
-                leading: Icon(Icons.help),
-                title: Text("SUGGEST"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
+        drawer: const DrawerExtends(
+          color: Colors.black,
         ),
       ),
     );
