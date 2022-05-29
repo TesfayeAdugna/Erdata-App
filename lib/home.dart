@@ -1,4 +1,7 @@
+import 'smallText.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'children.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,22 +18,49 @@ class _HomePageState extends State<HomePage> {
     color: Color.fromARGB(255, 7, 80, 139),
     fontSize: 18,
   );
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 59, 37, 37),
           title: Text('ERDATA'),
-          actions: [
-            IconButton(
-              alignment: Alignment.center,
-              iconSize: 518.0,
-              padding: EdgeInsets.all(5.0),
-              icon: Image.asset("assets/logo2.jpg"),
-              onPressed: () {},
-            ),
-          ],
+          backgroundColor: Color.fromARGB(255, 25, 6, 133),
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(5.0),
+                icon: Icon(Icons.menu),
+                onPressed: () {},
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    alignment: Alignment.center,
+                    iconSize: 200.0,
+                    padding: EdgeInsets.all(5.0),
+                    icon: ClipRRect(
+                      child: Image.asset("assets/logo2.jpg"),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              IconButton(
+                alignment: Alignment.center,
+                iconSize: 50.0,
+                padding: EdgeInsets.all(10.0),
+                icon: ClipRRect(
+                  child: Image.asset("assets/profile_image2.jpg"),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -42,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                 height: 300,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 71, 52, 52),
+                    color: Color.fromARGB(255, 71, 52, 52).withOpacity(0.8),
                     borderRadius: BorderRadius.circular(25.0)),
                 child: Column(
                   children: [
                     Text(
-                      " WELCOME TO ERDATA ",
+                      " WELCOME TO ERDATA \n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromARGB(255, 248, 80, 14),
@@ -55,15 +85,7 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Text(
-                      describe,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
+                    SmallText(text: describe, color: whiteColor),
                   ],
                 ),
               ),
@@ -76,207 +98,90 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  // crossAxisAlignment: CrossAxisAlignment.start,   added later to check
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 300,
-                      width: 200,
-                      padding: EdgeInsets.only(left: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
-                                child: Image.asset(
-                                  "assets/profile_image1.jpg",
-                                  width: 180,
-                                  height: 200,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("NAME:   firstname"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("BIRTHDATE: DD/MM/YY"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("ADDRESS:   City,address"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\n See More...",
-                                textAlign: TextAlign.center,
-                                style: seeStyle,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 300,
-                      width: 200,
-                      padding: EdgeInsets.only(left: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
-                                child: Image.asset(
-                                  "assets/profile_image1.jpg",
-                                  width: 180,
-                                  height: 200,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("NAME:   firstname"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("BIRTHDATE: DD/MM/YY"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("ADDRESS:   City,address"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\n See More...",
-                                textAlign: TextAlign.center,
-                                style: seeStyle,
-                              ),
-                            ],
-                          ),
-                        ],
+                    Expanded(
+                      child: Container(
+                        width: double.maxFinite,
+                        height: 350,
+                        child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemCount:
+                                (children.length) - (children.length - 4),
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return SizedBox(width: 20);
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              final child = children[index];
+                              return Container(
+                                  margin: EdgeInsets.only(left: 10, right: 10),
+                                  padding: EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  width: 200,
+                                  height: 300,
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(25),
+                                        child: Image.asset(
+                                          "assets/profile_image1.jpg",
+                                          width: 160,
+                                          height: 120,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "NAME: ${child.name}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        "DOB: ${child.dob}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        "ADDRESS: ${child.address}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "\n SEE MORE...",
+                                          textAlign: TextAlign.center,
+                                          style: seeStyle,
+                                        ),
+                                      ),
+                                    ],
+                                  ));
+                            }),
                       ),
                     ),
-                    Container(
-                      height: 300,
-                      width: 200,
-                      padding: EdgeInsets.only(left: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
-                                child: Image.asset(
-                                  "assets/profile_image1.jpg",
-                                  width: 180,
-                                  height: 200,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("NAME:   firstname"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("BIRTHDATE: DD/MM/YY"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("ADDRESS:   City,address"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\n See More...",
-                                textAlign: TextAlign.center,
-                                style: seeStyle,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 300,
-                      width: 200,
-                      padding: EdgeInsets.only(left: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
-                                child: Image.asset(
-                                  "assets/profile_image1.jpg",
-                                  width: 180,
-                                  height: 200,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("NAME:   firstname"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("BIRTHDATE: DD/MM/YY"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("ADDRESS:   City,address"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\n See More...",
-                                textAlign: TextAlign.center,
-                                style: seeStyle,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    IconButton(
+                      icon: Icon(Icons.arrow_circle_right),
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -286,66 +191,91 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     height: 200,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.black,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.phone, color: whiteColor),
-                            SizedBox(width: 16),
-                            Text(
-                              "PHONE",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            print("pressed");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.phone, color: whiteColor),
+                              const SizedBox(width: 16),
+                              Text(
+                                "PHONE",
+                                style: TextStyle(color: whiteColor),
+                              ),
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.telegram, color: whiteColor),
-                            SizedBox(width: 16),
-                            Text(
-                              "TELEGRAM",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            print("pressed");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.telegram, color: whiteColor),
+                              const SizedBox(width: 16),
+                              Text(
+                                "TELEGRAM",
+                                style: TextStyle(color: whiteColor),
+                              ),
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.facebook, color: whiteColor),
-                            SizedBox(width: 16),
-                            Text(
-                              "FACEBOOK",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            print("pressed");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.facebook, color: whiteColor),
+                              const SizedBox(width: 16),
+                              Text(
+                                "FACEBOOK",
+                                style: TextStyle(color: whiteColor),
+                              ),
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.camera, color: whiteColor),
-                            SizedBox(width: 16),
-                            Text(
-                              "INSTAGRAM",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            print("pressed");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.camera, color: whiteColor),
+                              const SizedBox(width: 16),
+                              Text(
+                                "INSTAGRAM",
+                                style: TextStyle(color: whiteColor),
+                              ),
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.email, color: whiteColor),
-                            SizedBox(width: 16),
-                            Text(
-                              "EMAIL",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            print("pressed");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.email, color: whiteColor),
+                              const SizedBox(width: 16),
+                              Text(
+                                "EMAIL",
+                                style: TextStyle(color: whiteColor),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
