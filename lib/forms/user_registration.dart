@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../custom_widget/RoundButton.dart';
-import '../custom_widget/drawers.dart';
+
 import '../constant.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
@@ -49,9 +48,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
               height: 24.0,
             ),
             RoundedButton(
-              onPressed: () {
-                context.go('/');
-              },
+              onPressed: () {},
               text: 'Register',
               color: Colors.teal.shade500,
             ),
