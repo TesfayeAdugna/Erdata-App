@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'children.dart';
 import 'smallText.dart';
 import '../custom_widget/drawers.dart';
@@ -199,8 +201,14 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GestureDetector(
-                          onTap: () {
-                            context.go('/user_registration');
+                          onTap: () async {
+                            String telephoneNum = '+251 921787397';
+                            String telephoneUrl = "sms: $telephoneNum";
+                            if (await canLaunchUrlString(telephoneUrl)) {
+                              await launchUrlString(telephoneUrl);
+                            } else {
+                              throw " Error occured connecting to that cell number.";
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -215,8 +223,13 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            context.go('/user_registration');
+                          onTap: () async {
+                            String TelegramUrl = "https:telegram.me/Ashbel0";
+                            if (await canLaunchUrlString(TelegramUrl)) {
+                              await launchUrlString(TelegramUrl);
+                            } else {
+                              throw " Error occured connecting to the Telegram.";
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -231,8 +244,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            context.go('/user_registration');
+                          onTap: () async {
+                            String FacebookUrl =
+                                "https:facebook.com/people/Tesfaye-Adugna/100077814634008/";
+                            if (await canLaunchUrlString(FacebookUrl)) {
+                              await launchUrlString(FacebookUrl);
+                            } else {
+                              throw " Error occured connecting to the Facebook.";
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -247,8 +266,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            context.go('/user_registration');
+                          onTap: () async {
+                            String InstagramUrl =
+                                "https:instagram.com/tesfishadugna/";
+                            if (await canLaunchUrlString(InstagramUrl)) {
+                              await launchUrlString(InstagramUrl);
+                            } else {
+                              throw " Error occured connecting to the Instagram.";
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -263,8 +288,20 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            context.go('/user_registration');
+                          onTap: () async {
+                            String EmailAddress = 'arunokijonathan@gmail.com';
+                            String EmailSubject =
+                                " Erdata app, comments and Questions";
+                            String EmailBody =
+                                " Dear Erdata App Developers, \n";
+
+                            String EmailUrl =
+                                "mailto: $EmailAddress?subject=$EmailSubject&body=$EmailBody";
+                            if (await canLaunchUrlString(EmailUrl)) {
+                              await launchUrlString(EmailUrl);
+                            } else {
+                              throw " Error occured connecting to the Email.";
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
