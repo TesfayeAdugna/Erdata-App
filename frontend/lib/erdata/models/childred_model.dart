@@ -1,29 +1,29 @@
 class Children {
   int? id;
-  String? first_name;
-  String? last_name;
-  String? gender;
-  String? photos;
-  String? birth_date;
-  String? description;
-  String? bank_account;
-  String? kebele;
-  String? woreda;
-  String? zone;
-  String? region;
+  String first_name;
+  String last_name;
+  String gender;
+  String photos;
+  String birth_date;
+  String description;
+  String bank_account;
+  String kebele;
+  String woreda;
+  String zone;
+  String region;
   Children(
       {this.id,
-      this.first_name,
-      this.last_name,
-      this.photos,
-      this.gender,
-      this.birth_date,
-      this.description,
-      this.bank_account,
-      this.kebele,
-      this.region,
-      this.woreda,
-      this.zone});
+      required this.first_name,
+      required this.last_name,
+      required this.photos,
+      required this.gender,
+      required this.birth_date,
+      required this.description,
+      required this.bank_account,
+      required this.kebele,
+      required this.region,
+      required this.woreda,
+      required this.zone});
   factory Children.fromJson(Map<String, dynamic> json) {
     return Children(
         id: json["id"],

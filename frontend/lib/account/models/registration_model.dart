@@ -1,19 +1,19 @@
 class Registration {
   int? id;
-  String? password;
-  String? password2;
-  String? username;
-  String? first_name;
-  String? last_name;
-  String? email;
+  String password;
+  String password2;
+  String username;
+  String first_name;
+  String last_name;
+  String email;
   Registration(
       {this.id,
-      this.username,
-      this.password,
-      this.password2,
-      this.first_name,
-      this.last_name,
-      this.email});
+      required this.username,
+      required this.password,
+      required this.password2,
+      required this.first_name,
+      required this.last_name,
+      required this.email});
   factory Registration.fromJson(Map<String, dynamic> json) {
     return Registration(
         id: json["id"],
