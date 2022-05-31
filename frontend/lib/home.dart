@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'children.dart';
+import '../erdata/screens/screens.dart';
+import 'package:go_router/go_router.dart';
 import 'smallText.dart';
 import '../custom_widget/drawers.dart';
 
@@ -148,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       SizedBox(height: 10),
                                       Text(
-                                        "DOB: ${child.dob}",
+                                        "AGE: ${child.age}",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Colors.black,
@@ -158,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       SizedBox(height: 10),
                                       Text(
-                                        "ADDRESS: ${child.address}",
+                                        "EDUCATION: ${child.Education_level}",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Colors.black,
@@ -169,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(height: 10),
                                       GestureDetector(
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          context.go('/child_detail');
                                         },
                                         child: Text(
                                           "\n SEE MORE...",
