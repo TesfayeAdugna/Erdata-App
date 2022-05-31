@@ -26,7 +26,7 @@ class SuggestionDataProvider {
   }
 
   Future<Suggestion> fetchByCode(int code) async {
-    final url = 'http://127.0.0.1:8000/erdata/suggestion-list';
+    const url = 'http://127.0.0.1:8000/erdata/suggestion-list';
     final response = await http.get(Uri.parse("$url/$code"));
 
     if (response.statusCode == 200) {
@@ -37,7 +37,7 @@ class SuggestionDataProvider {
   }
 
   Future<List<Suggestion>> fetchAll() async {
-    final url = 'http://127.0.0.1:8000/erdata/suggestion-list/';
+    const url = 'http://127.0.0.1:8000/erdata/suggestion-list/';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final suggestion = jsonDecode(response.body) as List;
