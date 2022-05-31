@@ -26,16 +26,13 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('ERDATA'),
+          title: Text('Erdata'),
           backgroundColor: Color.fromARGB(255, 25, 6, 133),
           flexibleSpace: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(5.0),
-                icon: Icon(Icons.menu),
-                onPressed: () {},
+              Container(
+                width: 150,
               ),
               Row(
                 children: [
@@ -63,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-        ),
+    ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
