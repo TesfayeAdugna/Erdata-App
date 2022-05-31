@@ -61,7 +61,7 @@ class DrawerExtends extends StatelessWidget {
             leading: Icon(Icons.people),
             title: Text("ABOUT"),
             onTap: () {
-              context.go('/');
+              context.go('/about');
             },
           ),
           ListTile(

@@ -1,3 +1,4 @@
+import 'package:sec_2/erdata/screens/about.dart';
 import 'package:sec_2/erdata/screens/donate.dart';
 import 'package:sec_2/forms/login.dart';
 import '../forms/forms.dart';
@@ -54,6 +55,11 @@ class profile extends StatelessWidget {
         path: '/donate',
         builder: (BuildContext context, GoRouterState state) =>
             Donate()),
+    GoRoute(
+        name: 'about',
+        path: '/about',
+        builder: (BuildContext context, GoRouterState state) =>
+            About()),
     GoRoute(
         name: 'child_detail',
         path: '/child_detail',
