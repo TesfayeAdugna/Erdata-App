@@ -53,13 +53,11 @@ class profile extends StatelessWidget {
     GoRoute(
         name: 'donate',
         path: '/donate',
-        builder: (BuildContext context, GoRouterState state) =>
-            Donate()),
+        builder: (BuildContext context, GoRouterState state) => Donate()),
     GoRoute(
         name: 'about',
         path: '/about',
-        builder: (BuildContext context, GoRouterState state) =>
-            About()),
+        builder: (BuildContext context, GoRouterState state) => About()),
     GoRoute(
         name: 'child_detail',
         path: '/child_detail',

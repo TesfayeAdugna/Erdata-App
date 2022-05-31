@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import '../../custom_widget/drawers.dart';
 // import 'image_provider.dart';
 
@@ -30,46 +31,13 @@ class ChildSuggestion extends StatelessWidget {
     final storyController = TextEditingController();
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
-            appBar: AppBar(
-          title: Text('Suggest'),
-          backgroundColor: Color.fromARGB(255, 25, 6, 133),
-          flexibleSpace: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 150,
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    alignment: Alignment.center,
-                    iconSize: 200.0,
-                    padding: EdgeInsets.all(5.0),
-                    icon: ClipRRect(
-                      child: Image.asset("assets/logo2.jpg"),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              IconButton(
-                alignment: Alignment.center,
-                iconSize: 50.0,
-                padding: EdgeInsets.all(10.0),
-                icon: ClipRRect(
-                  child: Image.asset("assets/profile_image2.jpg"),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
-    ),
+            appBar: HeaderBar(
+              title: Text("SUGGEST ONE"),
+              appBar: AppBar(),
+            ),
             drawer: const DrawerExtends(
               color: Colors.black,
             ),
-            
             body: Padding(
               padding:
                   EdgeInsets.only(left: 40, right: 10, top: 20, bottom: 50),
@@ -226,14 +194,8 @@ class ChildSuggestion extends StatelessWidget {
                   ],
                 ),
               ),
-              
             ),
-          
-          )
-          
-          ),
-          
+          )),
     );
-    
   }
 }
