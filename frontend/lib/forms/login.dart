@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import '../custom_widget/RoundButton.dart';
-
-// import '../constant.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'registration';
