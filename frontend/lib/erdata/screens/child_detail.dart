@@ -9,8 +9,9 @@ class Child_Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
-            appBar: AppBar(
-              title: Text("children detail"),
+            appBar: HeaderBar(
+              title: Text("CHILDREN DETAIL"),
+              appBar: AppBar(),
             ),
             drawer: const DrawerExtends(
               color: Colors.black,

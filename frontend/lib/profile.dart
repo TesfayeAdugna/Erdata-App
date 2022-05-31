@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'constant.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
+// import 'constant.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -15,6 +16,9 @@ class Profile extends StatelessWidget {
             child: Text("name of child!"),
           ),
           backgroundColor: Colors.teal,
+        ),
+        drawer: const DrawerExtends(
+          color: Colors.black,
         ),
         body: GridView(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

@@ -12,7 +12,7 @@ class SuggestionDataProvider {
         body: jsonEncode({
           "child_name": suggestion.child_name,
           "gender": suggestion.gender,
-          "brith_date": suggestion.brith_date,
+          "birth_date": suggestion.brith_date,
           "description": suggestion.description,
           "suggested_by": suggestion.suggested_by
         }));
@@ -21,7 +21,7 @@ class SuggestionDataProvider {
       return Suggestion.fromJson(jsonDecode(response.body));
     }
     {
-     throw Exception("Failed to create suggestion");
+      throw Exception("Failed to create suggestion");
     }
   }
 
@@ -54,5 +54,4 @@ class SuggestionDataProvider {
       throw Exception("Field to delete the suggestion");
     }
   }
-
 }

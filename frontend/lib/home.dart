@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../erdata/screens/screens.dart';
 import 'package:go_router/go_router.dart';
-import 'smallText.dart';
-import '../custom_widget/drawers.dart';
+// import 'smallText.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,44 +25,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('ERDATA'),
-          backgroundColor: Color.fromARGB(255, 25, 6, 133),
-          flexibleSpace: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(5.0),
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    alignment: Alignment.center,
-                    iconSize: 200.0,
-                    padding: EdgeInsets.all(5.0),
-                    icon: ClipRRect(
-                      child: Image.asset("assets/logo2.jpg"),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              IconButton(
-                alignment: Alignment.center,
-                iconSize: 50.0,
-                padding: EdgeInsets.all(10.0),
-                icon: ClipRRect(
-                  child: Image.asset("assets/profile_image2.jpg"),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
+        appBar: HeaderBar(
+          title: Text("ERDATA"),
+          appBar: AppBar(),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -188,137 +153,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    height: 200,
-                    decoration: const BoxDecoration(
-                      color: Colors.black,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: () async {
-                            String telephoneNum = '+251 921787397';
-                            String telephoneUrl = "sms: $telephoneNum";
-                            if (await canLaunchUrlString(telephoneUrl)) {
-                              await launchUrlString(telephoneUrl);
-                            } else {
-                              throw " Error occured connecting to that cell number.";
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.phone, color: whiteColor),
-                              const SizedBox(width: 16),
-                              Text(
-                                "PHONE",
-                                style: TextStyle(color: whiteColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            String TelegramUrl = "https:telegram.me/Ashbel0";
-                            if (await canLaunchUrlString(TelegramUrl)) {
-                              await launchUrlString(TelegramUrl);
-                            } else {
-                              throw " Error occured connecting to the Telegram.";
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.telegram, color: whiteColor),
-                              const SizedBox(width: 16),
-                              Text(
-                                "TELEGRAM",
-                                style: TextStyle(color: whiteColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            String FacebookUrl =
-                                "https:facebook.com/people/Tesfaye-Adugna/100077814634008/";
-                            if (await canLaunchUrlString(FacebookUrl)) {
-                              await launchUrlString(FacebookUrl);
-                            } else {
-                              throw " Error occured connecting to the Facebook.";
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.facebook, color: whiteColor),
-                              const SizedBox(width: 16),
-                              Text(
-                                "FACEBOOK",
-                                style: TextStyle(color: whiteColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            String InstagramUrl =
-                                "https:instagram.com/tesfishadugna/";
-                            if (await canLaunchUrlString(InstagramUrl)) {
-                              await launchUrlString(InstagramUrl);
-                            } else {
-                              throw " Error occured connecting to the Instagram.";
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.camera, color: whiteColor),
-                              const SizedBox(width: 16),
-                              Text(
-                                "INSTAGRAM",
-                                style: TextStyle(color: whiteColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            String EmailAddress = 'arunokijonathan@gmail.com';
-                            String EmailSubject =
-                                " Erdata app, comments and Questions";
-                            String EmailBody =
-                                " Dear Erdata App Developers, \n";
-
-                            String EmailUrl =
-                                "mailto: $EmailAddress?subject=$EmailSubject&body=$EmailBody";
-                            if (await canLaunchUrlString(EmailUrl)) {
-                              await launchUrlString(EmailUrl);
-                            } else {
-                              throw " Error occured connecting to the Email.";
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.email, color: whiteColor),
-                              const SizedBox(width: 16),
-                              Text(
-                                "EMAIL",
-                                style: TextStyle(color: whiteColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              Footer(),
             ],
           ),
         ),

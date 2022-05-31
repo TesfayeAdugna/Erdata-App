@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import '../custom_widget/RoundButton.dart';
 
-import '../constant.dart';
+// import '../constant.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'registration';
@@ -16,6 +17,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HeaderBar(
+        title: Text("ERDATA LOGIN PAGE"),
+        appBar: AppBar(),
+      ),
+      drawer: const DrawerExtends(
+        color: Colors.black,
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -36,6 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
               text: 'Log in',
               color: Colors.teal.shade500,
             ),
+            SizedBox(height: 260),
+            Footer(),
           ],
         ),
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import '../custom_widget/RoundButton.dart';
 
-import '../constant.dart';
+// import '../constant.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
   static String id = 'registration';
@@ -16,6 +17,13 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HeaderBar(
+        title: Text("ERDATA USER REGISTRATION"),
+        appBar: AppBar(),
+      ),
+      drawer: const DrawerExtends(
+        color: Colors.black,
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),

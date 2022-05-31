@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import '../screens/children.dart';
 import 'package:go_router/go_router.dart';
 import '../blocs/blocs.dart';
@@ -12,9 +13,9 @@ class ChildrenList extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
-            appBar: AppBar(
+            appBar: HeaderBar(
               title: Text("CHILDREN LIST"),
-              centerTitle: true,
+              appBar: AppBar(),
             ),
             drawer: const DrawerExtends(
               color: Colors.black,

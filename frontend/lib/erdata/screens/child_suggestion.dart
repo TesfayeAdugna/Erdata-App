@@ -42,6 +42,7 @@ class ChildSuggestion extends StatelessWidget {
             drawer: const DrawerExtends(
               color: Colors.black,
             ),
+            
             body: Padding(
               padding:
                   EdgeInsets.only(left: 40, right: 10, top: 20, bottom: 50),
@@ -206,8 +207,14 @@ class ChildSuggestion extends StatelessWidget {
                   ],
                 ),
               ),
+              
             ),
-          )),
+          
+          )
+          
+          ),
+          
     );
+    
   }
 }
