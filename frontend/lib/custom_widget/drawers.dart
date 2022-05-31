@@ -52,7 +52,7 @@ class DrawerExtends extends StatelessWidget {
             leading: Icon(Icons.money),
             title: Text("DONATE"),
             onTap: () {
-              context.go('/donate');
+              context.go('/donation');
             },
           ),
           ListTile(
@@ -88,7 +88,7 @@ class DrawerExtends extends StatelessWidget {
             leading: Icon(Icons.login),
             title: Text("LOG IN"),
             onTap: () {
-              context.go('/login.dart');
+              context.go('/login');
             },
           ),
         ],

@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.teal.shade500,
             ),
             SizedBox(height: 260),
-            Footer(),
+            
           ],
         ),
       ),

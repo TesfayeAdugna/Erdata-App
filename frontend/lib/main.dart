@@ -1,62 +1,147 @@
-import 'package:sec_2/erdata/screens/screens.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/erdata/blocs/blocs.dart';
+import './erdata/data_providers/data_provider.dart';
 import '../forms/forms.dart';
+import '../erdata/screens/screens.dart';
+import 'erdata/repository/children_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sec_2/home.dart';
+import 'theme.dart';
 
-void main() => runApp(profile());
 
-class profile extends StatelessWidget {
-  profile({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => MaterialApp.router(
-        routeInformationParser: _router.routeInformationParser,
-        routerDelegate: _router.routerDelegate,
-        title: "ERDATA",
-      );
+void main() {
+  final ChildrenRepository childrenRepository =
+      ChildrenRepository(ChildrenDataProvider());
 
-  final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
-    GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) => HomePage()),
-    GoRoute(
-      name: 'children_list',
-      path: '/children_list',
-      pageBuilder: (BuildContext context, state) => MaterialPage(
-        key: state.pageKey,
-        child: ChildrenList(),
-      ),
+  BlocOverrides.runZoned(
+    () => runApp(
+      ErdataApp(childrenRepository: childrenRepository),
     ),
-    GoRoute(
-        name: 'user_register',
-        path: '/user_registration',
-        builder: (BuildContext context, GoRouterState state) =>
-            UserRegistrationScreen()),
-    GoRoute(
-        name: 'login',
-        path: '/login.dart',
-        builder: (BuildContext context, GoRouterState state) => LoginScreen()),
-    GoRoute(
-        name: 'child_register',
-        path: '/children_registration',
-        builder: (BuildContext context, GoRouterState state) =>
-            ChildrenRegistrationScreen()),
-    GoRoute(
-        name: 'child_suggest',
-        path: '/child_suggestion',
-        builder: (BuildContext context, GoRouterState state) =>
-            ChildSuggestion()),
-    GoRoute(
-        name: 'donate',
-        path: '/donate',
-        builder: (BuildContext context, GoRouterState state) => Donate()),
-    GoRoute(
-        name: 'about',
-        path: '/about',
-        builder: (BuildContext context, GoRouterState state) => About()),
-    GoRoute(
-        name: 'child_detail',
-        path: '/child_detail',
-        builder: (BuildContext context, GoRouterState state) => Child_Detail(child:children))
-  ]);
+  );
 }
+
+class ErdataApp extends StatelessWidget {
+  final ChildrenRepository childrenRepository;
+
+  const ErdataApp({Key? key, required this.childrenRepository})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider.value(
+      value: childrenRepository,
+      child: BlocProvider(
+        create: (context) =>
+            ChildrenBloc(childrenRepository: childrenRepository)
+              ..add(const ChildrenLoad()),
+        child: MaterialApp.router(
+          routeInformationParser: _router.routeInformationParser,
+          routerDelegate: _router.routerDelegate,
+          title: 'Course App',
+          theme: AppTheme.light(),
+        ),
+      ),
+    );
+  }
+}
+
+final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
+  GoRoute(
+    name: 'home',
+    path: '/',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: HomePage(),
+    ),
+  ),
+  GoRoute(
+    name: 'children_list',
+    path: '/children_list',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: ChildrenList(),
+    ),
+  ),
+  GoRoute(
+    name: 'user_registration',
+    path: '/user_registration',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: UserRegistrationScreen(),
+    ),
+  ),
+  GoRoute(
+    name: 'login',
+    path: '/login',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: LoginScreen(),
+    ),
+  ),
+  GoRoute(
+    name: 'child_registration',
+    path: '/child_registration',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: ChildrenRegistrationScreen(),
+    ),
+  ),
+  GoRoute(
+    name: 'child_suggestion',
+    path: '/child_suggestion',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: ChildSuggestion(),
+    ),
+  ),
+  GoRoute(
+    name: 'donation',
+    path: '/donation',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: Donate(),
+    ),
+  ),
+  // GoRoute(
+  //     name: 'children_detail',
+  //     path: '/children_detail',
+  //     pageBuilder: (BuildContext context, state) {
+  //       final Children children;
+  //       return MaterialPage(
+  //         key: state.pageKey,
+  //         child: Child_Detail(child: children),
+  //       );
+  //     }),
+  GoRoute(
+    name: 'about',
+    path: '/about',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: About(),
+    ),
+  ),
+]);
+
+// Page<dynamic> _errorBuilder(BuildContext context, GoRouterState state) =>
+//     MaterialPage<ErrorPage>(
+//       key: state.pageKey,
+//       child: ErrorPage(error: '',),
+//     );
+
+// class ErrorPage extends StatelessWidget {
+//   final String error;
+//   ErrorPage({required this.error});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return Text("Some error");
+
+//   }
+// }
+
+// Future<ChildrenRepository> child(String? id) async{
+  
+//   return ChildrenRepository(ChildrenDataProvider().fetchByid(id));
+// }

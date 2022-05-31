@@ -147,7 +147,7 @@ class ChildrenList extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () {
-              return context.goNamed("child_suggest");
+              return context.goNamed("child_suggestion");
             },
             child: Icon(Icons.add)),
       

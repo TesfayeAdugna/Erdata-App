@@ -1,9 +1,10 @@
-import '../data_providers/data_provider.dart';
-import '../data_providers/children_local_provider.dart';
+import 'package:sec_2/erdata/data_providers/data_provider.dart';
+
+
 import '../models/model.dart';
 
 class ChildrenRepository {
-  final ChildrenProvider childrenProvider;
+  ChildrenDataProvider childrenProvider;
   ChildrenRepository(this.childrenProvider);
 
   Future<Children> create(Children children) async {

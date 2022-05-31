@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-import 'package:sec_2/erdata/data_providers/children_data_provider.dart';
-
+import 'children_data_provider.dart';
 import '../models/model.dart';
 
 class ChildrenDataProvider implements ChildrenProvider{
+  @override
   Future<Children> create(Children children) async {
     const url = 'http://127.0.0.1:8000/erdata/children-create/';
     final http.Response response = await http.post(Uri.parse(url),
@@ -32,6 +31,7 @@ class ChildrenDataProvider implements ChildrenProvider{
     }
   }
 
+  @override
   Future<Children> fetchByid(int code) async {
     const url = 'http://127.0.0.1:8000/erdata/children';
     final response = await http.get(Uri.parse("$url/$code"));
@@ -43,6 +43,7 @@ class ChildrenDataProvider implements ChildrenProvider{
     }
   }
 
+  @override
   Future<List<Children>> fetchAll() async {
     const url = 'http://127.0.0.1:8000/erdata/children/';
     final response = await http.get(Uri.parse(url));
@@ -54,6 +55,7 @@ class ChildrenDataProvider implements ChildrenProvider{
     }
   }
 
+  @override
   Future<Children> update(int id, Children children) async {
     const url = 'http://127.0.0.1:8000/erdata/children-up-del';
     final response = await http.put(Uri.parse("$url/$id"),
@@ -79,6 +81,7 @@ class ChildrenDataProvider implements ChildrenProvider{
     }
   }
 
+  @override
   Future<void> delete(int id) async {
     const url = 'http://127.0.0.1:8000/erdata/children-up-del';
     final response = await http.delete(Uri.parse("$url/$id"));
