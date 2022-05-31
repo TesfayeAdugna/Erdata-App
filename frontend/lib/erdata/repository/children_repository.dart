@@ -1,27 +1,54 @@
 import '../data_providers/data_provider.dart';
+import '../data_providers/children_local_provider.dart';
 import '../models/model.dart';
 
 class ChildrenRepository {
-  final ChildrenDataProvider dataProvider;
-  ChildrenRepository(this.dataProvider);
+  final ChildrenProvider childrenProvider;
+  ChildrenRepository(this.childrenProvider);
 
   Future<Children> create(Children children) async {
-    return dataProvider.create(children);
+    final addedChild = Children(
+      id: children.id,
+      first_name: children.first_name,
+     last_name: children.last_name, 
+     photos: children.photos, 
+     gender: children.gender,
+      birth_date: children.birth_date, 
+      description: children.description, 
+      bank_account: children.bank_account, 
+      kebele: children.kebele,
+       region: children.region,
+        woreda: children.woreda,
+         zone: children.zone);
+    return await childrenProvider.create(addedChild);
   }
 
   Future<Children> update(int id, Children children) async {
-    return dataProvider.update(id, children);
+   final addedChild = Children(
+     id: children.id,
+     first_name: children.first_name,
+     last_name: children.last_name, 
+     photos: children.photos, 
+     gender: children.gender,
+      birth_date: children.birth_date, 
+      description: children.description, 
+      bank_account: children.bank_account, 
+      kebele: children.kebele,
+       region: children.region,
+        woreda: children.woreda,
+         zone: children.zone);
+    return await childrenProvider.create(addedChild);
   }
 
   Future<Children> fetchById(int id) async {
-    return dataProvider.fetchByid(id);
+    return childrenProvider.fetchByid(id);
   }
 
   Future<List<Children>> fetchAll() async {
-    return dataProvider.fetchAll();
+    return childrenProvider.fetchAll();
   }
 
   Future<void> delete(int id) async {
-    dataProvider.delete(id);
+    childrenProvider.delete(id);
   }
 }

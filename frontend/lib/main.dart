@@ -57,6 +57,6 @@ class profile extends StatelessWidget {
     GoRoute(
         name: 'child_detail',
         path: '/child_detail',
-        builder: (BuildContext context, GoRouterState state) => Child_Detail())
+        builder: (BuildContext context, GoRouterState state) => Child_Detail(child:children))
   ]);
 }

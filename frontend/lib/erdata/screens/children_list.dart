@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:sec_2/erdata/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 import '../blocs/blocs.dart';
+import '../../custom_widget/drawers.dart';
 
 class ChildrenList extends StatelessWidget {
   ChildrenList({Key? key}) : super(key: key);
@@ -11,139 +10,149 @@ class ChildrenList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: ((context, constraints) => Scaffold(
-            appBar: HeaderBar(
-              title: Text("CHILDREN LIST"),
-              appBar: AppBar(),
-            ),
-            drawer: const DrawerExtends(
-              color: Colors.black,
-            ),
-            body: BlocConsumer<ChildrenBloc, ChildrenState>(
-              listener: (_, ChildrenState state) {},
-              builder: (_, ChildrenState state) {
-                return PageView.builder(
-                  controller: pageController,
-                  scrollDirection: Axis.vertical,
+      builder: ((context, constraints) => 
+      
+           Scaffold(
+        appBar: AppBar(
+          title: Text("CHILDREN LIST"),
+          centerTitle: true,
+        ),
+        drawer: const DrawerExtends(
+          color: Colors.black,
+        ),
+        body: BlocConsumer<ChildrenBloc, ChildrenState>(
+          listener: (_, ChildrenState state) {},
+          builder: (_, ChildrenState state) {
+            if (state is ChildrenLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is ChildrenOperationFailure) {
+              return Center(
+                child: Text("Couldnot fetch children list"),
+              );
+            }
+            if (state is ChildrenOperationSuccess) {
+              final children = state.childrens;
+              return PageView.builder(
                   itemCount: children.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: double.maxFinite,
-                      height: 600,
-                      child: GestureDetector(
-                          onTap: () {
-                            return context.goNamed("detail");
-                          },
-                          child: _children_info(index)),
+                  itemBuilder: (_, int index) {
+                    return GestureDetector(
+                      onTap: () {},
+                      child: Stack(
+                        alignment: Alignment(1.0, 1.0),
+                        children: [
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              margin: EdgeInsets.all(10),
+                              height: 250,
+                              width: double.maxFinite,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(30),
+                                image: DecorationImage(
+                                  image:
+                                      AssetImage("assets/profile_image1.jpg"),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 220,
+                            right: 10,
+                            left: 10,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 30, right: 30),
+                              width: 300,
+                              height: 270,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: Center(
+                                child: Container(
+                                  padding: EdgeInsets.only(top: 50),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        "Name: ${children.elementAt(index).first_name + " " + children.elementAt(index).last_name}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "BirthDate: ${children.elementAt(index).birth_date}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Gender: ${children.elementAt(index).gender}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Kebele: ${children.elementAt(index).region}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Short Story: ${children.elementAt(index).kebele}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Short Story: ${children.elementAt(index).woreda}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
-                  },
-                );
-              },
-            ),
-            floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  return context.goNamed("suggest");
-                },
-                child: Icon(Icons.add)),
-          )),
-    );
-  }
-
-  Widget _children_info(int index) {
-    // final List prefixes = ["Name: ", "Age: ", "Educatiool"]
-    final Children child = children[index];
-    return Stack(
-      alignment: Alignment(1.0, 1.0),
-      children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            margin: EdgeInsets.all(10),
-            height: 250,
-            width: double.maxFinite,
-
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                image: AssetImage(child.Image),
-                fit: BoxFit.cover,
-              ),
-            ),
-            // child: CircleAvatar(
-            //   backgroundImage: AssetImage("assets/child_1.jpg"),
-            //   radius: 50,
-            // ),
-          ),
+                  });
+            }
+            return Text("Not handled State");
+          },
         ),
-        Positioned(
-          top: 220,
-          right: 10,
-          left: 10,
-          child: Container(
-            margin: EdgeInsets.only(left: 30, right: 30),
-            width: 300,
-            height: 270,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(15)),
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.only(top: 50),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      "Name: ${child.name}",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Age: ${child.age.toString()}",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Education Level: ${child.Education_level}",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Parent's Status: ${child.Parent_status}",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Short Story: ${child.Short_Story}",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              return context.goNamed("child_suggest");
+            },
+            child: Icon(Icons.add)),
+      
+           )
+      ),
     );
   }
 }

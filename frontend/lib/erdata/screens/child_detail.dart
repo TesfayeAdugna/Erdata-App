@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'children.dart';
+import '../../custom_widget/custom_widgets.dart';
+
+import '../models/childred_model.dart';
 
 class Child_Detail extends StatelessWidget {
-  const Child_Detail({Key? key}) : super(key: key);
-
+  const Child_Detail({Key? key, required this.child}) : super(key: key);
+  final Children child;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
-            appBar: HeaderBar(
-              title: Text("CHILDREN DETAIL"),
-              appBar: AppBar(),
+            appBar: AppBar(
+              title: Text("children detail"),
             ),
             drawer: const DrawerExtends(
               color: Colors.black,
             ),
             body: Center(
-              child: _children_detail(),
-            ),
-          )),
-    );
-  }
-
-  Widget _children_detail() {
-    // final List prefixes = ["Name: ", "Age: ", "Education"]
-    final Children child = children[0];
-    return Stack(
+              child: Stack(
       alignment: Alignment(1.0, 1.0),
       children: [
         Positioned(
@@ -42,7 +33,7 @@ class Child_Detail extends StatelessWidget {
               color: Colors.black,
               borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
-                image: AssetImage(child.Image),
+                image: AssetImage("assets/profile_image1.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -68,7 +59,7 @@ class Child_Detail extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      "Name: ${child.name}",
+                      "Name: ${child.first_name + " " + child.last_name}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -77,7 +68,7 @@ class Child_Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Age: ${child.age.toString()}",
+                      "BirthDate ${child.birth_date}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -86,7 +77,7 @@ class Child_Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Education Level: ${child.Education_level}",
+                      "Gender ${child.gender}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -95,7 +86,7 @@ class Child_Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Parent's Status: ${child.Parent_status}",
+                      "Description: ${child.description}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -104,7 +95,34 @@ class Child_Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Short Story: ${child.Short_Story}",
+                      "Region: ${child.region}",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Woreda: ${child.woreda}",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Kebele: ${child.kebele}",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Account: ${child.bank_account}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -118,6 +136,11 @@ class Child_Detail extends StatelessWidget {
           ),
         ),
       ],
+    ),
+            ),
+          )),
     );
   }
+
+  
 }
