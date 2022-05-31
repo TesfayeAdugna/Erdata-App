@@ -42,6 +42,7 @@ dependencies:
   equatable: ^2.0.3
   url_launcher: ^6.1.2
   flutter_clean_architecture: ^5.0.2
+  dropdown_button2: ^1.4.0
 
 
 dev_dependencies:

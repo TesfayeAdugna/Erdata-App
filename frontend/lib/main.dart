@@ -1,12 +1,10 @@
 import 'package:sec_2/forms/login.dart';
-
-import 'forms/user_registration.dart';
+import '../forms/forms.dart';
+import '../erdata/screens/screens.dart';
+import 'erdata/screens/child_suggestion.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sec_2/home.dart';
-import '../erdata/screens/children_list.dart';
-
-
 
 void main() => runApp(profile());
 
@@ -19,32 +17,40 @@ class profile extends StatelessWidget {
         title: "ERDATA",
       );
 
-  final GoRouter _router = GoRouter(
-    initialLocation: '/',
-    routes: <GoRoute>[
+  final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) => HomePage()),
-        GoRoute(
-          name: 'children_list',
-          path: '/children_list', 
-          pageBuilder: (BuildContext context, state)=>
-             MaterialPage(
-              key: state.pageKey,
-              child: ChildrenList(),
-            ),
-          
-        ),
     GoRoute(
+      name: 'children_list',
+      path: '/children_list',
+      pageBuilder: (BuildContext context, state) => MaterialPage(
+        key: state.pageKey,
+        child: ChildrenList(),
+      ),
+    ),
+    GoRoute(
+        name: 'user_register',
         path: '/user_registration',
         builder: (BuildContext context, GoRouterState state) =>
             UserRegistrationScreen()),
     GoRoute(
+        name: 'login',
         path: '/login.dart',
         builder: (BuildContext context, GoRouterState state) => LoginScreen()),
     GoRoute(
+        name: 'child_register',
         path: '/children_registration',
         builder: (BuildContext context, GoRouterState state) =>
-            UserRegistrationScreen())
+            ChildrenRegistrationScreen()),
+    GoRoute(
+        name: 'child_suggest',
+        path: '/child_suggestion',
+        builder: (BuildContext context, GoRouterState state) =>
+            ChildSuggestion()),
+    GoRoute(
+        name: 'child_detail',
+        path: '/child_detail',
+        builder: (BuildContext context, GoRouterState state) => Child_Detail())
   ]);
 }

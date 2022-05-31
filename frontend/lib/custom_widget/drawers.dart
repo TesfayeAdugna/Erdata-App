@@ -70,7 +70,7 @@ class DrawerExtends extends StatelessWidget {
             leading: Icon(Icons.checklist),
             title: Text("CHILDREN LIST"),
             onTap: () {
-              context.go('/');
+              context.go('/children_list');
             },
           ),
           ListTile(
@@ -79,7 +79,7 @@ class DrawerExtends extends StatelessWidget {
             leading: Icon(Icons.help),
             title: Text("SUGGEST"),
             onTap: () {
-              context.go('/');
+              context.go('/child_suggestion');
             },
           ),
           ListTile(
