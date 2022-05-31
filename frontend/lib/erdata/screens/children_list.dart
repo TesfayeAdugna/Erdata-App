@@ -1,9 +1,11 @@
-import 'package:erdata_app1/Children/bloc/index.dart';
+// import 'package:erdata_app1/Children/bloc/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/erdata/blocs/children_state.dart';
+import '../blocs/children_bloc.dart';
 import 'children.dart';
 import 'package:go_router/go_router.dart';
-import '../bloc/index.dart';
+// import '../bloc/index.dart';
 class ChildrenList extends StatelessWidget {
   ChildrenList({Key? key}) : super(key: key);
   PageController pageController = PageController(viewportFraction: 0.90);
@@ -16,9 +18,9 @@ class ChildrenList extends StatelessWidget {
         
       ),
       drawer: Drawer(),
-      body: BlocConsumer<ChildrenBloc, Children_State>(
-        listener: (_, Children_State state){},
-        builder: (_, Children_State state){
+      body: BlocConsumer<ChildrenBloc, ChildrenState>(
+        listener: (_, ChildrenState state){},
+        builder: (_, ChildrenState state){
           return PageView.builder(
             controller: pageController,
             scrollDirection: Axis.vertical,
