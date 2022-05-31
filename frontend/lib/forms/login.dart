@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../custom_widget/RoundButton.dart';
 
 import '../constant.dart';
+import '../custom_widget/drawers.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'registration';
@@ -17,6 +18,42 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+          title: Text('Login'),
+          backgroundColor: Color.fromARGB(255, 25, 6, 133),
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 150,
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    alignment: Alignment.center,
+                    iconSize: 200.0,
+                    padding: EdgeInsets.all(5.0),
+                    icon: ClipRRect(
+                      child: Image.asset("assets/logo2.jpg"),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              IconButton(
+                alignment: Alignment.center,
+                iconSize: 50.0,
+                padding: EdgeInsets.all(10.0),
+                icon: ClipRRect(
+                  child: Image.asset("assets/profile_image2.jpg"),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+    ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -39,6 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+      drawer: const DrawerExtends(
+          color: Colors.black,
+        ),
     );
   }
 

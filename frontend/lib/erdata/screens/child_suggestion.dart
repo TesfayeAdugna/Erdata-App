@@ -31,14 +31,41 @@ class ChildSuggestion extends StatelessWidget {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
             appBar: AppBar(
-              title: Text("Suggest One"),
-              centerTitle: true,
-              flexibleSpace: IconButton(
-                alignment: Alignment.topLeft,
-                icon: Icon(Icons.arrow_back_sharp),
+          title: Text('Suggest'),
+          backgroundColor: Color.fromARGB(255, 25, 6, 133),
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 150,
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    alignment: Alignment.center,
+                    iconSize: 200.0,
+                    padding: EdgeInsets.all(5.0),
+                    icon: ClipRRect(
+                      child: Image.asset("assets/logo2.jpg"),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              IconButton(
+                alignment: Alignment.center,
+                iconSize: 50.0,
+                padding: EdgeInsets.all(10.0),
+                icon: ClipRRect(
+                  child: Image.asset("assets/profile_image2.jpg"),
+                  borderRadius: BorderRadius.circular(50),
+                ),
                 onPressed: () {},
               ),
-            ),
+            ],
+          ),
+    ),
             drawer: const DrawerExtends(
               color: Colors.black,
             ),
@@ -49,14 +76,6 @@ class ChildSuggestion extends StatelessWidget {
                 key: formKey,
                 child: ListView(
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        child: Image.asset("assets/logo2.jpg"),
-                      ),
-                    ),
                     SizedBox(height: 40),
 
                     TextFormField(
