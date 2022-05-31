@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import '../screens/children.dart';
+import 'package:sec_2/erdata/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 import '../blocs/blocs.dart';
-import '../../custom_widget/drawers.dart';
 
 class ChildrenList extends StatelessWidget {
   ChildrenList({Key? key}) : super(key: key);

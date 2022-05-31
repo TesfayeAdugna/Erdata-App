@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);

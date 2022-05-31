@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../custom_widget/custom_widgets.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
 import 'children.dart';
 
 class Child_Detail extends StatelessWidget {

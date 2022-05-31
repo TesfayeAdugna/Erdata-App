@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-import '../erdata/screens/screens.dart';
+import 'package:sec_2/erdata/screens/screens.dart';
 import 'package:go_router/go_router.dart';
-// import 'smallText.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
