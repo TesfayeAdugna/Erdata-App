@@ -44,6 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
               text: 'Log in',
               color: Colors.teal.shade500,
             ),
+            SizedBox(height: 10),
+            RoundedButton(
+              onPressed: () {},
+              text: 'Sign Up Here',
+              color: Colors.teal.shade500,
+            ),
             SizedBox(height: 260),
             Footer(),
           ],
