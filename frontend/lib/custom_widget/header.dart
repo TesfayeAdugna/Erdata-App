@@ -11,7 +11,7 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
-      backgroundColor: Color.fromARGB(255, 25, 6, 133),
+      backgroundColor: Color.fromARGB(255, 104, 104, 104),
       flexibleSpace: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

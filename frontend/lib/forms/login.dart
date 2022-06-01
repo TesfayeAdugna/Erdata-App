@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: Text("ERDATA LOGIN PAGE"),
+        title: Text("LOGIN"),
         appBar: AppBar(),
       ),
       drawer: const DrawerExtends(

@@ -30,7 +30,7 @@ class ChildSuggestion extends StatelessWidget {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
             appBar: HeaderBar(
-              title: Text("SUGGEST ONE"),
+              title: Text("SUGGEST"),
               appBar: AppBar(),
             ),
             drawer: const DrawerExtends(
