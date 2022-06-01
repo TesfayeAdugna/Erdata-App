@@ -1,4 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/admin/bloc/admin_bloc.dart';
+import 'package:sec_2/admin/bloc/admin_event.dart';
+import 'package:sec_2/admin/data_provider/user_local_provider.dart';
+import 'package:sec_2/admin/repository/admin_repository.dart';
+import 'package:sec_2/admin/screens/admin_screen.dart';
 import 'package:sec_2/erdata/blocs/blocs.dart';
 import './erdata/data_providers/data_provider.dart';
 import '../forms/forms.dart';
@@ -9,32 +14,47 @@ import 'package:go_router/go_router.dart';
 import 'package:sec_2/home.dart';
 import 'theme.dart';
 
-
 void main() {
   final ChildrenRepository childrenRepository =
       ChildrenRepository(ChildrenDataProvider());
+  final AdminRepository adminRepository = AdminRepository(UserDataProvider());
 
   BlocOverrides.runZoned(
     () => runApp(
-      ErdataApp(childrenRepository: childrenRepository),
+      ErdataApp(
+        childrenRepository: childrenRepository,
+        adminRepository: adminRepository,
+      ),
     ),
   );
 }
 
 class ErdataApp extends StatelessWidget {
   final ChildrenRepository childrenRepository;
+  final AdminRepository adminRepository;
 
-  const ErdataApp({Key? key, required this.childrenRepository})
+  const ErdataApp(
+      {Key? key,
+      required this.childrenRepository,
+      required this.adminRepository})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: childrenRepository,
-      child: BlocProvider(
-        create: (context) =>
-            ChildrenBloc(childrenRepository: childrenRepository)
-              ..add(const ChildrenLoad()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                ChildrenBloc(childrenRepository: childrenRepository)
+                  ..add(const ChildrenLoad()),
+          ),
+          BlocProvider(
+            create: (context) => AdminBloc(adminRepository: adminRepository)
+              ..add(const UserListLoad()),
+          ),
+        ],
         child: MaterialApp.router(
           routeInformationParser: _router.routeInformationParser,
           routerDelegate: _router.routerDelegate,
@@ -46,7 +66,8 @@ class ErdataApp extends StatelessWidget {
   }
 }
 
-final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
+final GoRouter _router =
+    GoRouter(initialLocation: '/', routes: <GoRoute>[
   GoRoute(
     name: 'home',
     path: '/',
@@ -61,6 +82,14 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     pageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: ChildrenList(),
+    ),
+  ),
+  GoRoute(
+    name: 'user_list',
+    path: '/user_list',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: UsersList(),
     ),
   ),
   GoRoute(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import '../custom_widget/RoundButton.dart';
+import '../../custom_widget/RoundButton.dart';
 
 // import '../constant.dart';
 
@@ -73,7 +73,9 @@ class _ChildrenRegistrationScreenState
               SizedBox(
                 height: 22.0,
               ),
-              FormBox('description'),
+              FormBox(
+                
+                'description'),
               SizedBox(
                 height: 24.0,
               ),
@@ -89,14 +91,17 @@ class _ChildrenRegistrationScreenState
     );
   }
 
-  TextField FormBox(String lable) {
-    return TextField(
-        textAlign: TextAlign.center,
-        onChanged: (value) {
-          email = value;
-        },
-        decoration: kTextFileDecoration.copyWith(
-          hintText: lable,
-        ));
+  TextFormField FormBox(String label) {
+    return TextFormField(
+      
+    decoration: InputDecoration(
+        hintText: label,
+        border: UnderlineInputBorder()),
+    validator: (String? username) {
+      if (username == null || username.isEmpty) {
+        return "Image should not be empty";
+      }
+    }
+);
   }
 }

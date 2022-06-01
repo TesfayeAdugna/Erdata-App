@@ -43,6 +43,9 @@ dependencies:
   url_launcher: ^6.1.2
   flutter_clean_architecture: ^5.0.2
   dropdown_button2: ^1.4.0
+  dartz: ^0.10.1
+  flutter_secure_storage: ^5.0.2
+  dio: ^4.0.6
 
 
 dev_dependencies:
