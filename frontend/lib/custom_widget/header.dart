@@ -22,7 +22,10 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
           IconButton(
             alignment: Alignment.center,
             padding: EdgeInsets.all(5.0),
-            icon: Icon(Icons.menu),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
             onPressed: () {},
           ),
           Row(
