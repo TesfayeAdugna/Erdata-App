@@ -11,10 +11,7 @@ class LoginScreen extends StatelessWidget {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
             appBar: AppBar(
-              title: Text(
-                "ERDATA",
-                style: TextStyle(color: Colors.white),
-              ),
+              title: Text("ERDATA"),
               centerTitle: true,
             ),
             body: Padding(
@@ -93,8 +90,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        final formValid = formKey.currentState!.validate();
-                        if (!formValid) return;
+                        context.go('/user_registration');
                       },
                       child: Text(
                         "SIGNUP",

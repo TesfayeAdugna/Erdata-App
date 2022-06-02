@@ -3,15 +3,15 @@ import 'package:sec_2/admin/bloc/admin_bloc.dart';
 import 'package:sec_2/admin/bloc/admin_event.dart';
 import 'package:sec_2/admin/data_provider/user_local_provider.dart';
 import 'package:sec_2/admin/repository/admin_repository.dart';
-import 'package:sec_2/admin/screens/admin_screen.dart';
 import 'package:sec_2/erdata/blocs/blocs.dart';
 import './erdata/data_providers/data_provider.dart';
-import '../forms/forms.dart';
+import 'admin/screens/admin.dart';
 import '../erdata/screens/screens.dart';
 import 'erdata/repository/children_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sec_2/home.dart';
+import 'account/screens/logins.dart';
 import 'theme.dart';
 
 void main() {
@@ -147,6 +147,14 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     pageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: About(),
+    ),
+  ),
+  GoRoute(
+    name: 'admin_screen',
+    path: '/admin_screen',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: UsersList(),
     ),
   ),
 ]);

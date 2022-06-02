@@ -16,8 +16,9 @@ class UsersList extends StatelessWidget {
       builder: ((context, constraints) => Scaffold(
             appBar: AppBar(
               title: Text("USERS LIST"),
+              toolbarHeight: 80,
               flexibleSpace: Padding(
-                padding: EdgeInsets.only(top: 12, right: 8),
+                padding: EdgeInsets.only(top: 25),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
