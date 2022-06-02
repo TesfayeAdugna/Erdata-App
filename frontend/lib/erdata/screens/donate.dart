@@ -12,7 +12,7 @@ class Donate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: Text("DONATE"),
+        title: "DONATE",
         appBar: AppBar(),
       ),
       body: SingleChildScrollView(

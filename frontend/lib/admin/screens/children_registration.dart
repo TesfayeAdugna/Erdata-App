@@ -20,7 +20,7 @@ class _ChildrenRegistrationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: Text("CHILD REGISTRATION"),
+        title: "CHILD REGISTRATION",
         appBar: AppBar(),
       ),
       drawer: const DrawerExtends(
@@ -73,9 +73,7 @@ class _ChildrenRegistrationScreenState
               SizedBox(
                 height: 22.0,
               ),
-              FormBox(
-                
-                'description'),
+              FormBox('description'),
               SizedBox(
                 height: 24.0,
               ),
@@ -93,15 +91,12 @@ class _ChildrenRegistrationScreenState
 
   TextFormField FormBox(String label) {
     return TextFormField(
-      
-    decoration: InputDecoration(
-        hintText: label,
-        border: UnderlineInputBorder()),
-    validator: (String? username) {
-      if (username == null || username.isEmpty) {
-        return "Image should not be empty";
-      }
-    }
-);
+        decoration:
+            InputDecoration(hintText: label, border: UnderlineInputBorder()),
+        validator: (String? username) {
+          if (username == null || username.isEmpty) {
+            return "Image should not be empty";
+          }
+        });
   }
 }

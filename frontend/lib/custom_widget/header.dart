@@ -4,13 +4,17 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
   const HeaderBar({Key? key, required this.title, required this.appBar})
       : super(key: key);
 
-  final Text title;
+  final String title;
+
   final AppBar appBar;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: title,
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.white),
+      ),
       backgroundColor: Color.fromARGB(255, 104, 104, 104),
       flexibleSpace: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

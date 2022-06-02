@@ -58,7 +58,7 @@ class ErdataApp extends StatelessWidget {
         child: MaterialApp.router(
           routeInformationParser: _router.routeInformationParser,
           routerDelegate: _router.routerDelegate,
-          title: 'Course App',
+          title: 'ERDATA',
           theme: AppTheme.light(),
         ),
       ),
@@ -66,8 +66,7 @@ class ErdataApp extends StatelessWidget {
   }
 }
 
-final GoRouter _router =
-    GoRouter(initialLocation: '/', routes: <GoRoute>[
+final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
   GoRoute(
     name: 'home',
     path: '/',

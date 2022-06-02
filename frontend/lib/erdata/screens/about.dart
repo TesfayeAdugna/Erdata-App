@@ -9,7 +9,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: Text("ABOUT US"),
+        title: "ABOUT US",
         appBar: AppBar(),
       ),
       body: SingleChildScrollView(

@@ -18,7 +18,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: Text("ERDATA USER REGISTRATION"),
+        title: "ERDATA USER REGISTRATION",
         appBar: AppBar(),
       ),
       drawer: const DrawerExtends(

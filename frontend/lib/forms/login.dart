@@ -11,7 +11,10 @@ class LoginScreen extends StatelessWidget {
     return LayoutBuilder(
       builder: ((context, constraints) => Scaffold(
             appBar: AppBar(
-              title: Text("ERDATA"),
+              title: Text(
+                "ERDATA",
+                style: TextStyle(color: Colors.white),
+              ),
               centerTitle: true,
             ),
             body: Padding(
