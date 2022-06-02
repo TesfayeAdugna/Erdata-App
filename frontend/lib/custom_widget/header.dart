@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sec_2/custom_widget/drawers.dart';
 
 class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
   const HeaderBar({Key? key, required this.title, required this.appBar})
@@ -19,14 +21,8 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(5.0),
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-            onPressed: () {},
+          Container(
+            width: 50,
           ),
           Row(
             children: [
@@ -38,7 +34,9 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
                   child: Image.asset("assets/logo2.jpg"),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  context.go("/about");
+                },
               ),
             ],
           ),
