@@ -46,6 +46,8 @@ dependencies:
   dartz: ^0.10.1
   flutter_secure_storage: ^5.0.2
   dio: ^4.0.6
+  bloc_test: ^9.0.3
+  mockito: ^5.2.0
 
 
 dev_dependencies:
