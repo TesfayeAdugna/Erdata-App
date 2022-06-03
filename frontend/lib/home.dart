@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final describe =
-      "Let us all stand together and lift our children from where they are. Let us give them hope because they are our future tomorrow. Let us give them strength for they will be our strength when we need it. Let us give them the love and care they deserve for they are our children.";
+      "A nation's strength of tomorrow depends on its children's state of today!. Children are the bricks on which the nation's foundation is based!. Let us give them strength for they will be our strength when we need it. Let us give them the love and care they deserve for they are our children.";
   final whiteColor = Colors.white;
   final seeStyle = TextStyle(
     color: Color.fromARGB(255, 7, 80, 139),
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                       " WELCOME TO ERDATA \n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color.fromARGB(255, 248, 80, 14),
+                        color: Color.fromARGB(255, 194, 124, 3),
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
                       ),
