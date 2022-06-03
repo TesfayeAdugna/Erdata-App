@@ -73,9 +73,6 @@ class About extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const DrawerExtends(
-        color: Colors.black,
-      ),
     );
   }
 }

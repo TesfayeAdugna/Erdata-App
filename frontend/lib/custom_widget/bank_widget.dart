@@ -26,7 +26,7 @@ class BankWidgets extends StatelessWidget {
               Text(
                 // "Abissinia Bank",
                 text_one!,
-                style: TextStyle(fontSize: 24, color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               )
             ],
           ),
@@ -52,7 +52,7 @@ class BankWidgets extends StatelessWidget {
               Text(
                 // "Wello sefer branch",
                 text_three!,
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               )
             ],
           ),
