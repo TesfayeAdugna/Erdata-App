@@ -14,9 +14,9 @@ class ChildrenList extends StatelessWidget {
       child: LayoutBuilder(
         builder: ((context, constraints) => Scaffold(
               appBar: HeaderBar(
-            title: "",
-            appBar: AppBar(),
-          ),
+                title: "CHILDREN LIST",
+                appBar: AppBar(),
+              ),
               drawer: const DrawerExtends(
                 color: Colors.black,
               ),
@@ -67,12 +67,14 @@ class ChildrenList extends StatelessWidget {
                                   right: 10,
                                   left: 10,
                                   child: Container(
-                                    margin: EdgeInsets.only(left: 30, right: 30),
+                                    margin:
+                                        EdgeInsets.only(left: 30, right: 30),
                                     width: 300,
                                     height: 270,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(15)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Center(
                                       child: Container(
                                         padding: EdgeInsets.only(top: 50),

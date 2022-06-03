@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: HeaderBar(
-          title: "",
+          title: "ERDATA",
           appBar: AppBar(),
         ),
         body: SingleChildScrollView(

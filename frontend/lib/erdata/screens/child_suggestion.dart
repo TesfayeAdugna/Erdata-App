@@ -28,7 +28,7 @@ class ChildSuggestion extends StatelessWidget {
       child: LayoutBuilder(
         builder: ((context, constraints) => Scaffold(
               appBar: HeaderBar(
-                title: "",
+                title: "SUGGEST ONE",
                 appBar: AppBar(),
               ),
               body: Padding(

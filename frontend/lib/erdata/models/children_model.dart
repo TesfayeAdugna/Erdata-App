@@ -31,7 +31,7 @@ class Children {
         last_name: json["last_name"],
         photos: json["photos"],
         gender: json["gender"],
-        birth_date: json["brith_date"],
+        birth_date: json["birth_date"],
         description: json["description"],
         bank_account: json["bank_account"],
         kebele: json["kebele"],

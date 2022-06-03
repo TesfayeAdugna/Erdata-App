@@ -25,21 +25,21 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
             width: 50,
           ),
           Row(
-            children: [
-              IconButton(
-                alignment: Alignment.center,
-                iconSize: 200.0,
-                padding: EdgeInsets.all(5.0),
-                icon: ClipRRect(
-                  child: Image.asset("assets/logo2.jpg"),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                onPressed: () {
-                  context.go("/about");
-                },
+              // children: [
+              //   IconButton(
+              //     alignment: Alignment.center,
+              //     iconSize: 200.0,
+              //     padding: EdgeInsets.all(5.0),
+              //     icon: ClipRRect(
+              //       child: Image.asset("assets/logo2.jpg"),
+              //       borderRadius: BorderRadius.circular(30),
+              //     ),
+              //     onPressed: () {
+              //       context.go("/about");
+              //     },
+              //   ),
+              // ],
               ),
-            ],
-          ),
           IconButton(
             alignment: Alignment.center,
             iconSize: 50.0,

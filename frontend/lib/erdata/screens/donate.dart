@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+// import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../custom_widget/drawers.dart';
 
@@ -13,7 +13,7 @@ class Donate extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: HeaderBar(
-          title: "",
+          title: "DONATE",
           appBar: AppBar(),
         ),
         body: SingleChildScrollView(

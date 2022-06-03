@@ -13,6 +13,7 @@ class ChildrenBloc extends Bloc<ChildrenEvent, ChildrenState> {
         final childrens = await childrenRepository.fetchAll();
         emit(ChildrenOperationSuccess(childrens));
       } catch (error) {
+        print(error);
         emit(ChildrenOperationFailure(error));
       }
     });
