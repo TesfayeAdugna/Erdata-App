@@ -94,12 +94,22 @@ class DrawerExtends extends StatelessWidget {
           ListTile(
             iconColor: Colors.blue,
             selectedColor: Color.fromARGB(255, 75, 4, 167),
+            leading: Icon(Icons.app_registration_rounded),
+            title: Text("Signup"),
+            onTap: () {
+              context.go('/user_registration');
+            },
+          ),
+          ListTile(
+            iconColor: Colors.blue,
+            selectedColor: Color.fromARGB(255, 75, 4, 167),
             leading: Icon(Icons.admin_panel_settings_rounded),
             title: Text("ADMIN"),
             onTap: () {
               context.go('/admin_screen');
             },
           ),
+          
         ],
       ),
     );
