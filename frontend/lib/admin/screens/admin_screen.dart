@@ -8,8 +8,8 @@ import 'package:sec_2/admin/bloc/admin_state.dart';
 import '../../../custom_widget/drawers.dart';
 import '../../custom_widget/header.dart';
 
-class UsersList extends StatelessWidget {
-  UsersList({Key? key}) : super(key: key);
+class AdminScreen extends StatelessWidget {
+  AdminScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +44,15 @@ class UsersList extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // 2
+                     
                       Container(
                         width: 200,
                         height: 50,
                         child: Card(
                           child: ElevatedButton(
-                            child: Text("See suggestions"),
+                            child: const Text("See suggestions"),
                             onPressed: () {
-                              // context.go('/child_registration');
+                              context.go('/suggested_list');
                             },
                           ),
                         ),
@@ -66,38 +66,38 @@ class UsersList extends StatelessWidget {
                             child: Text("See User List"),
                             onPressed: () {
                               
-                              // context.go('/child_registration');
+                              context.go('/user_list');
                             },
                           ),
                         ),
                       ),
 
                       // fetching from backend starts here.
-                      BlocConsumer<AdminBloc, AdminState>(
-                        listener: (_, AdminState state) {},
-                        builder: (_, AdminState state) {
-                          if (state is UserListLoading) {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                          if (state is UserListLoadFailure) {
-                            return Center(
-                              child: Text("Couldnot fetch children list"),
-                            );
-                          }
-                          if (state is UserListLoadSucccess) {
-                            final user = state.users;
-                            return ListView.builder(
-                                itemCount: user.length,
-                                itemBuilder: (_, int index) {
-                                  return GestureDetector(
-                                      onTap: () {}, child: ListTile());
-                                });
-                          }
-                          return Text("Not handled State");
-                        },
-                      ),
+                      // BlocConsumer<AdminBloc, AdminState>(
+                      //   listener: (_, AdminState state) {},
+                      //   builder: (_, AdminState state) {
+                      //     if (state is UserListLoading) {
+                      //       return Center(
+                      //         child: CircularProgressIndicator(),
+                      //       );
+                      //     }
+                      //     if (state is UserListLoadFailure) {
+                      //       return Center(
+                      //         child: Text("Couldnot fetch children list"),
+                      //       );
+                      //     }
+                      //     if (state is UserListLoadSucccess) {
+                      //       final user = state.users;
+                      //       return ListView.builder(
+                      //           itemCount: user.length,
+                      //           itemBuilder: (_, int index) {
+                      //             return GestureDetector(
+                      //                 onTap: () {}, child: ListTile());
+                      //           });
+                      //     }
+                      //     return Text("Not handled State");
+                      //   },
+                      // ),
                     ],
                   ),
                 ],

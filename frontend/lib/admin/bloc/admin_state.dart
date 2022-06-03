@@ -15,7 +15,7 @@ class UserListLoading extends AdminState{
   
 }
 class UserListLoadSucccess extends AdminState {
-  final Iterable<Registration> users;
+  final List<UserBE> users;
 
   const UserListLoadSucccess([this.users = const []]);
 

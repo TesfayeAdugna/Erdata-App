@@ -2,48 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../custom_widget/header.dart';
-import '../blocs/blocs.dart';
+import '../../erdata/blocs/blocs.dart';
 import '../../custom_widget/drawers.dart';
 
-class ChildrenList extends StatelessWidget {
-  ChildrenList({Key? key}) : super(key: key);
-  PageController pageController = PageController(viewportFraction: 0.85);
+class SuggestedList extends StatelessWidget {
+  SuggestedList({Key? key}) : super(key: key);
+  PageController pageController = PageController(viewportFraction: 0.90);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: LayoutBuilder(
+    return LayoutBuilder(
         builder: ((context, constraints) => Scaffold(
               appBar: HeaderBar(
-                title: "CHILDREN LIST",
+                title: "SUGGESTED CHILDREN LIST",
                 appBar: AppBar(),
               ),
               drawer: const DrawerExtends(
                 color: Colors.black,
               ),
-              body: BlocConsumer<ChildrenBloc, ChildrenState>(
-                listener: (_, ChildrenState state) {},
-                builder: (_, ChildrenState state) {
-                  if (state is ChildrenLoading) {
-                    return Center(
+              body: BlocConsumer<SuggestionBloc, SuggestionState>(
+                listener: (_, SuggestionState state) {},
+                builder: (_, SuggestionState state) {
+                  if (state is SuggestionLoading) {
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
-                  if (state is ChildrenOperationFailure) {
-                    return Center(
+                  if (state is SuggestionOperationFailure) {
+                    return const Center(
                       child: Text("Couldnot fetch children list"),
                     );
                   }
-                  if (state is ChildrenOperationSuccess) {
-                    final children = state.childrens;
+                  if (state is SuggestionOperationSuccess) {
+                    final suggested = state.suggestions;
                     return PageView.builder(
-                      controller: pageController,
-                      scrollDirection: Axis.vertical,
-                        itemCount: children.length,
+                        itemCount: suggested.length,
                         itemBuilder: (_, int index) {
                           return GestureDetector(
-                            onTap: () {
-                              
-                            },
+                            onTap: () {},
                             child: Stack(
                               alignment: Alignment(1.0, 1.0),
                               children: [
@@ -57,7 +52,7 @@ class ChildrenList extends StatelessWidget {
                                     width: double.maxFinite,
                                     decoration: BoxDecoration(
                                       color: Colors.black,
-                                      borderRadius: BorderRadius.circular(50),
+                                      borderRadius: BorderRadius.circular(30),
                                       image: DecorationImage(
                                         image: AssetImage(
                                             "assets/profile_image1.jpg"),
@@ -78,60 +73,60 @@ class ChildrenList extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
-                                            BorderRadius.circular(25)),
+                                            BorderRadius.circular(15)),
                                     child: Center(
                                       child: Container(
                                         padding: EdgeInsets.only(top: 50),
                                         child: Column(
                                           children: <Widget>[
                                             Text(
-                                              "Name: ${children.elementAt(index).first_name + " " + children.elementAt(index).last_name}",
-                                              style: TextStyle(
+                                              "Name: ${suggested.elementAt(index).child_name }",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
+                                            const SizedBox(height: 20),
                                             Text(
-                                              "BirthDate: ${children.elementAt(index).birth_date}",
-                                              style: TextStyle(
+                                              "BirthDate: ${suggested.elementAt(index).brith_date}",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
+                                            const SizedBox(height: 20),
                                             Text(
-                                              "Gender: ${children.elementAt(index).gender}",
-                                              style: TextStyle(
+                                              "Gender: ${suggested.elementAt(index).gender}",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
+                                            const SizedBox(height: 20),
                                             Text(
-                                              "Kebele: ${children.elementAt(index).region}",
-                                              style: TextStyle(
+                                              "Date : ${suggested.elementAt(index).date}",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
+                                            const SizedBox(height: 20),
                                             Text(
-                                              "Short Story: ${children.elementAt(index).kebele}",
-                                              style: TextStyle(
+                                              "Short Story: ${suggested.elementAt(index).description}",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
+                                            const SizedBox(height: 20),
                                             Text(
-                                              "Short Story: ${children.elementAt(index).woreda}",
-                                              style: TextStyle(
+                                              "Suggested by: ${suggested.elementAt(index).suggested_by}",
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
@@ -148,16 +143,12 @@ class ChildrenList extends StatelessWidget {
                           );
                         });
                   }
-                  return Text("Not handled State");
+                  return const Text("Not handled State");
                 },
               ),
-              floatingActionButton: FloatingActionButton(
-                  onPressed: () {
-                    return context.goNamed("child_suggestion");
-                  },
-                  child: Icon(Icons.add)),
+              
             )),
-      ),
+      
     );
   }
 }

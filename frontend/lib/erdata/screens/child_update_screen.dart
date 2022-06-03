@@ -2,28 +2,29 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
 
+import '../models/suggestion.dart';
 
-class ChildSuggestion extends StatelessWidget {
-  const ChildSuggestion({Key? key}) : super(key: key);
+class ChildrenUpdate extends StatelessWidget {
+  ChildrenUpdate({Key? key, required this.suggested}) : super(key: key) {
+    childnameController.text = suggested.child_name;
+    dateController.text = suggested.date;
+    birthdateController.text = suggested.brith_date;
+    usernameController.text = suggested.suggested_by;
+    storyController.text = suggested.description;
+  }
+  final Suggestion suggested;
+  final formKey = GlobalKey<FormState>();
+  final childnameController = TextEditingController();
+  final dateController = TextEditingController();
+  final imageController = TextEditingController();
+  final birthdateController = TextEditingController();
+  final usernameController = TextEditingController();
+  final storyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final List<String> gender = [
-      'Female',
-      'Male'
-    ];
-   
+    final List<String> gender = ['Female', 'Male'];
 
-    final formKey = GlobalKey<FormState>();
-    final childnameController = TextEditingController();
-    final dateController = TextEditingController();
-
-    
-    final imageController = TextEditingController();
-    final birthdateController = TextEditingController();
-    final usernameController = TextEditingController();
-   
-    final storyController = TextEditingController();
     return SafeArea(
       child: LayoutBuilder(
         builder: ((context, constraints) => Scaffold(
@@ -32,14 +33,14 @@ class ChildSuggestion extends StatelessWidget {
                 appBar: AppBar(),
               ),
               body: Padding(
-                padding:
-                    const EdgeInsets.only(left: 40, right: 10, top: 20, bottom: 50),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 10, top: 20, bottom: 50),
                 child: Form(
                   key: formKey,
                   child: ListView(
                     children: [
                       const SizedBox(height: 40),
-    
+
                       TextFormField(
                           controller: childnameController,
                           decoration: InputDecoration(
@@ -50,8 +51,8 @@ class ChildSuggestion extends StatelessWidget {
                               return "Childname should not be empty";
                             }
                           }),
-                          const SizedBox(height: 20),
-                          
+                      const SizedBox(height: 20),
+
                       SizedBox(height: 20),
                       TextFormField(
                           controller: birthdateController,
@@ -64,11 +65,11 @@ class ChildSuggestion extends StatelessWidget {
                             }
                           }),
                       SizedBox(height: 20),
-    
+
                       DropdownButtonHideUnderline(
                         child: DropdownButtonFormField2(
                           hint: Text(
-                            'Gender',
+                            "",
                             style: TextStyle(
                               fontSize: 16,
                               color: Theme.of(context).hintColor,
@@ -91,9 +92,9 @@ class ChildSuggestion extends StatelessWidget {
                           itemHeight: 40,
                         ),
                       ),
-                     
+
                       SizedBox(height: 20),
-    
+
                       TextFormField(
                           controller: usernameController,
                           decoration: InputDecoration(
@@ -108,8 +109,7 @@ class ChildSuggestion extends StatelessWidget {
                       TextFormField(
                           controller: dateController,
                           decoration: InputDecoration(
-                              hintText: "Date",
-                              border: UnderlineInputBorder()),
+                              hintText: "Date", border: UnderlineInputBorder()),
                           validator: (String? woreda) {
                             if (woreda == null || woreda.isEmpty) {
                               return "Date field mustnot be empty";
@@ -141,8 +141,7 @@ class ChildSuggestion extends StatelessWidget {
                       //         return "Initiative should not be empty";
                       //       }
                       //     }),
-    
-                      
+
                       SizedBox(height: 20),
                       TextFormField(
                           controller: imageController,
@@ -154,11 +153,9 @@ class ChildSuggestion extends StatelessWidget {
                               return "Image should not be empty";
                             }
                           }),
-    
+
                       SizedBox(height: 20),
-                      
-    
-    
+
                       ElevatedButton(
                         onPressed: () {
                           final formValid = formKey.currentState!.validate();
@@ -175,9 +172,8 @@ class ChildSuggestion extends StatelessWidget {
               ),
               drawer: const DrawerExtends(
                 color: Colors.black,
-               ),
-            )
-            ),
+              ),
+            )),
       ),
     );
   }

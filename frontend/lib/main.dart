@@ -1,9 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/account/data_providers/data_providers.dart';
+import 'package:sec_2/account/repository/repository.dart';
 import 'package:sec_2/admin/bloc/admin_bloc.dart';
 import 'package:sec_2/admin/bloc/admin_event.dart';
 import 'package:sec_2/admin/data_provider/user_local_provider.dart';
 import 'package:sec_2/admin/repository/admin_repository.dart';
+import 'package:sec_2/admin/screens/suggested_list.dart';
+import 'package:sec_2/admin/screens/user_list_admin.dart';
 import 'package:sec_2/erdata/blocs/blocs.dart';
+import 'package:sec_2/erdata/models/model.dart';
+import 'package:sec_2/erdata/repository/suggestion_repository.dart';
 import './erdata/data_providers/data_provider.dart';
 import 'account/blocs/registration_bloc.dart';
 import 'account/data_providers/registration_data_provider.dart';
@@ -23,14 +29,18 @@ void main() {
   final RegistrationRepository registrationRepository =
       RegistrationRepository(RegistrationDataProvider());
   // final LoginRepository loginRepository = LoginRepository(LoginDataProvider());
-  final AdminRepository adminRepository = AdminRepository(UserDataProvider());
+  final UserBERepository userBERepository =
+      UserBERepository(UserBEDataProvider());
+  final SuggestionRepository suggestionRepository =
+      SuggestionRepository(SuggestionDataProvider());
 
   BlocOverrides.runZoned(
     () => runApp(
       ErdataApp(
         childrenRepository: childrenRepository,
         registrationRepository: registrationRepository,
-        adminRepository: adminRepository,
+        userBERepository: userBERepository,
+        suggestionRepository: suggestionRepository,
       ),
     ),
   );
@@ -39,13 +49,14 @@ void main() {
 class ErdataApp extends StatelessWidget {
   final ChildrenRepository childrenRepository;
   final RegistrationRepository registrationRepository;
-  final AdminRepository adminRepository;
+  final UserBERepository userBERepository;
+  final SuggestionRepository suggestionRepository;
 
   const ErdataApp(
       {Key? key,
       required this.childrenRepository,
       required this.registrationRepository,
-      required this.adminRepository})
+      required this.userBERepository, required this.suggestionRepository})
       : super(key: key);
 
   @override
@@ -64,8 +75,12 @@ class ErdataApp extends StatelessWidget {
                 registrationRepository: registrationRepository),
           ),
           BlocProvider(
-            create: (context) => AdminBloc(adminRepository: adminRepository)
+            create: (context) => AdminBloc(userBERepository: userBERepository)
               ..add(const UserListLoad()),
+          ),
+          BlocProvider(
+            create: (context) => SuggestionBloc(suggestionRepository: suggestionRepository)
+              ..add(SuggestionLoad()),
           ),
         ],
         child: MaterialApp.router(
@@ -144,6 +159,22 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       child: Donate(),
     ),
   ),
+  GoRoute(
+    name: 'suggested_list',
+    path: '/suggested_list',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: SuggestedList(),
+    ),
+  ),
+  //  GoRoute(
+  //   name: 'child_update',
+  //   path: '/child_update',
+  //   pageBuilder: (BuildContext context, state) => MaterialPage(
+  //     key: state.pageKey,
+  //     child: ChildrenUpdate(),
+  //   ),
+  // ),
   // GoRoute(
   //     name: 'children_detail',
   //     path: '/children_detail',
@@ -167,7 +198,7 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     path: '/admin_screen',
     pageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
-      child: UsersList(),
+      child: AdminScreen(),
     ),
   ),
 ]);

@@ -12,7 +12,7 @@ abstract class SuggestionState extends Equatable {
 class SuggestionLoading extends SuggestionState {}
 
 class SuggestionOperationSuccess extends SuggestionState {
-  final Iterable<Suggestion> suggestions;
+  final List<Suggestion> suggestions;
 
   const SuggestionOperationSuccess([this.suggestions = const []]);
 

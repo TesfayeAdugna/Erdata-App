@@ -26,7 +26,7 @@ class SuggestionDataProvider {
   }
 
   Future<Suggestion> fetchByCode(int code) async {
-    const url = 'http://127.0.0.1:8000/erdata/suggestion-list';
+    const url = 'http://127.0.0.1:8000/erdata/suggestion-list/';
     final response = await http.get(Uri.parse("$url/$code"));
 
     if (response.statusCode == 200) {

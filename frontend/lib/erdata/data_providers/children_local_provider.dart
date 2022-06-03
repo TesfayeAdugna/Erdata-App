@@ -36,7 +36,7 @@ class ChildrenDataProvider implements ChildrenProvider {
 
   @override
   Future<Children> fetchByid(int code) async {
-    const url = 'http://127.0.0.1:8000/erdata/children';
+    const url = 'http://127.0.0.1:8000/erdata/children/';
     final response = await http.get(Uri.parse("$url/$code"));
 
     if (response.statusCode == 200) {

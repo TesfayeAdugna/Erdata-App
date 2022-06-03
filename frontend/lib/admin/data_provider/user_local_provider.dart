@@ -29,7 +29,7 @@ class UserDataProvider implements UserProvider{
 
    @override
   Future<Registration> fetchByid(int code) async {
-    const url = 'http://127.0.0.1:8000/erdata/children';
+    const url = 'http://127.0.0.1:8000/account/user-list/';
     final response = await http.get(Uri.parse("$url/$code"));
 
     if (response.statusCode == 200) {
@@ -41,7 +41,7 @@ class UserDataProvider implements UserProvider{
 
   @override
   Future<List<Registration>> fetchAll() async {
-    const url = 'http://127.0.0.1:8000/erdata/children/';
+    const url = 'http://127.0.0.1:8000/account/user-list/';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final users = jsonDecode(response.body) as List;
