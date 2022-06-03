@@ -52,7 +52,7 @@ class UsersList extends StatelessWidget {
                           child: ElevatedButton(
                             child: Text("See suggestions"),
                             onPressed: () {
-                              // context.go('/child_registration');
+                              context.go('/suggested');
                             },
                           ),
                         ),
@@ -65,8 +65,7 @@ class UsersList extends StatelessWidget {
                           child: ElevatedButton(
                             child: Text("See User List"),
                             onPressed: () {
-                              
-                              // context.go('/child_registration');
+                              context.go('/userlist');
                             },
                           ),
                         ),

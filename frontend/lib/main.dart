@@ -10,6 +10,8 @@ import 'account/data_providers/registration_data_provider.dart';
 import 'account/repository/registration_repository.dart';
 import 'admin/screens/admin.dart';
 import '../erdata/screens/screens.dart';
+import 'admin/screens/suggested.dart';
+import 'admin/screens/userlist.dart';
 import 'erdata/repository/children_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -168,6 +170,22 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     pageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: UsersList(),
+    ),
+  ),
+  GoRoute(
+    name: 'userlist',
+    path: '/userlist',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: UserList(),
+    ),
+  ),
+  GoRoute(
+    name: 'suggested',
+    path: '/suggested',
+    pageBuilder: (BuildContext context, state) => MaterialPage(
+      key: state.pageKey,
+      child: Suggested(),
     ),
   ),
 ]);
