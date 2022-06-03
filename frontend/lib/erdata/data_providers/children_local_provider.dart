@@ -3,12 +3,15 @@ import 'package:http/http.dart' as http;
 import 'children_data_provider.dart';
 import '../models/model.dart';
 
-class ChildrenDataProvider implements ChildrenProvider{
+class ChildrenDataProvider implements ChildrenProvider {
   @override
   Future<Children> create(Children children) async {
     const url = 'http://127.0.0.1:8000/erdata/children-create/';
     final http.Response response = await http.post(Uri.parse(url),
-        headers: <String, String>{"Content-Type": "application/json"},
+        headers: <String, String>{
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
         body: jsonEncode({
           "first_name": children.first_name,
           "last_name": children.last_name,
