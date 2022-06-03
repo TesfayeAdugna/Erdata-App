@@ -12,8 +12,11 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: "ABOUT US",
+        title: " ",
         appBar: AppBar(),
+      ),
+      drawer: const DrawerExtends(
+        color: Colors.black,
       ),
       body: SingleChildScrollView(
         child: Column(
