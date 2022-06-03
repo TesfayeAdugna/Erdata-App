@@ -1,160 +1,202 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/account/blocs/blocs.dart';
+import 'package:sec_2/account/data_providers/data_providers.dart';
+import 'package:sec_2/account/models/model.dart';
+import 'package:sec_2/account/repository/registration_repository.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:sec_2/home.dart';
+import 'package:sec_2/custom_widget/RoundButton.dart';
 
-class UserRegistrationScreen extends StatelessWidget {
-  UserRegistrationScreen({Key? key}) : super(key: key);
-  final formKey = GlobalKey<FormState>();
-  final firstnameController = TextEditingController();
-   final usernameController = TextEditingController();
-  final lastnameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmpassController = TextEditingController();
+// import '../constant.dart';
+
+class UserRegistrationScreen extends StatefulWidget {
+  static String id = 'registration';
+  @override
+  _UserRegistrationScreenState createState() => _UserRegistrationScreenState();
+}
+
+class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
+  final _formKey = GlobalKey<FormState>();
+  dynamic validate;
+  final Map<String, dynamic> _register = {};
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: LayoutBuilder(
-        builder: ((context, constraints) => Scaffold(
-              appBar: HeaderBar(
-                title: "",
-                appBar: AppBar(),
-              ),
-              drawer: const DrawerExtends(
-                    color: Colors.black,
-                  ),
-              body: ListView(
-                children: 
-                  [Padding(
-                    padding: EdgeInsets.only(left: 70, right: 70, top: 20),
-                    child: Form(
-                      key: formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Container(
-                              child: Image(
-                                image: AssetImage("assets/logo3.jpg"),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15),
-                          TextFormField(
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                  hintText: "Email", border: UnderlineInputBorder()),
-                              validator: (String? email) {
-                                if (email == null || email.isEmpty) {
-                                  return "Email field must not be empty";
-                                }
-                                final validEmail =
-                                    RegExp("[A-Za-z]@[A-Za-z].[A-Za-z]");
-                                final correct = validEmail.hasMatch(email);
-              
-                                return correct ? null : "Enter a valid email";
-                              }),
-                          SizedBox(height: 15),
-                          TextFormField(
-                              controller: firstnameController,
-                              decoration: InputDecoration(
-                                  hintText: "First Name",
-                                  border: UnderlineInputBorder()),
-                              validator: (String? firstname) {
-                                if (firstname == null || firstname.isEmpty) {
-                                  return "First Name field must not be empty";
-                                }
-                              }),
-                              SizedBox(height: 15),
-                          TextFormField(
-                              controller: lastnameController,
-                              decoration: InputDecoration(
-                                  hintText: "Last Name",
-                                  border: UnderlineInputBorder()),
-                              validator: (String? lastname) {
-                                if (lastname == null || lastname.isEmpty) {
-                                  return "Last Name field must not be empty";
-                                }
-                              }),
-                          SizedBox(height: 15),
-                          TextFormField(
-                              controller: lastnameController,
-                              decoration: InputDecoration(
-                                  hintText: "Create username",
-                                  border: UnderlineInputBorder()),
-                              validator: (String? username) {
-                                if (username == null || username.isEmpty) {
-                                  return "Username field must not be empty";
-                                }
-                                final validname = username.length > 3;
-                                return validname
-                                    ? null
-                                    : "Username should be greater than 3";
-                              }),
-                          SizedBox(height: 15),
-                          TextFormField(
-                              controller: passwordController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  hintText: "Password",
-                                  border: UnderlineInputBorder()),
-                              validator: (String? password) {
-                                if (password == null || password.isEmpty) {
-                                  return "Password cannot be empty";
-                                }
-                                final validname = password.length > 6;
-                                return validname
-                                    ? null
-                                    : "Password should be atleast 6 characters";
-                              }),
-                          SizedBox(height: 15),
-                          TextFormField(
-                              controller: confirmpassController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  hintText: "Confirm Password",
-                                  border: UnderlineInputBorder()),
-                              validator: (String? password2) {
-                                if (password2 == null || password2.isEmpty) {
-                                  return "Password cannot be empty";
-                                }
-                                if (passwordController.text !=
-                                    confirmpassController.text) {
-                                  return "Not maching password";
-                                }
-                                final validname = password2.length > 6;
-                                return validname
-                                    ? null
-                                    : "Password should be atleast 6 characters";
-                              }),
-                          SizedBox(height: 20),
-                          ElevatedButton(
-                            onPressed: () {
-                              final formValid = formKey.currentState!.validate();
-                              if (!formValid) return;
-                              return context.go('/');
-                            },
-                            child: Text(
-                              "SIGNUP",
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: const Size(100, 50),
-                              maximumSize: const Size(100, 50),
-                              primary: Colors.brown,
-                              shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+    return Scaffold(
+      appBar: HeaderBar(
+        title: "ERDATA USER REGISTRATION",
+        appBar: AppBar(),
+      ),
+      drawer: const DrawerExtends(
+        color: Colors.black,
+      ),
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please enter Enter username';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'Enter username',
                     ),
-                  ),
-                ],
-              ),
-            )),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["username"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter your email';
+                      }
+                      final validEmail =
+                          RegExp("[A-Za-z0-9]@[A-Za-z0-9].[A-Za-z]");
+                      final correct = validEmail.hasMatch(value!);
+                      return correct ? null : "Enter a valid email";
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'Enter Email',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["email"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter first name';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'first name',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["first_name"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter last name';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'last name',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["last_name"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter Password';
+                      }
+                      validate = value;
+                      final validPassword = value!.length >= 7;
+                      return validPassword
+                          ? null
+                          : "Password length must be > 6";
+                    },
+                    textAlign: TextAlign.center,
+                    obscureText: true,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'password',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["password"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'confirm Password must not be null';
+                      }
+
+                      final validEmail = value;
+                      final correct = value == validate;
+                      return correct
+                          ? null
+                          : "password and confirm password must be similar.";
+                    },
+                    textAlign: TextAlign.center,
+                    obscureText: true,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'confirm password',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["password2"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                RoundedButton(
+                  onPressed: () {
+                    final form = _formKey.currentState;
+                    if (form != null && form.validate()) {
+                      form.save();
+                      final RegistrationEvent event = RegistrationCreate(
+                        Registration(
+                            username: _register["username"],
+                            email: _register["email"],
+                            first_name: _register["first_name"],
+                            last_name: _register["last_name"],
+                            password2: _register["password2"],
+                            password: _register["password"]),
+                      );
+                      BlocProvider.of<RegistrationBloc>(context).add(event);
+                      // Navigator.of(context).pushNamedAndRemoveUntil(
+                      //     CoursesList.routeName, (route) => false);
+                    }
+                  },
+                  text: 'Register',
+                  color: Colors.teal.shade500,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

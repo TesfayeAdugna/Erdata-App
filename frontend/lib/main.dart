@@ -5,6 +5,9 @@ import 'package:sec_2/admin/data_provider/user_local_provider.dart';
 import 'package:sec_2/admin/repository/admin_repository.dart';
 import 'package:sec_2/erdata/blocs/blocs.dart';
 import './erdata/data_providers/data_provider.dart';
+import 'account/blocs/registration_bloc.dart';
+import 'account/data_providers/registration_data_provider.dart';
+import 'account/repository/registration_repository.dart';
 import 'admin/screens/admin.dart';
 import '../erdata/screens/screens.dart';
 import 'erdata/repository/children_repository.dart';
@@ -15,14 +18,18 @@ import 'account/screens/logins.dart';
 import 'theme.dart';
 
 void main() {
-  final ChildrenRepository childrenRepository =
+   final ChildrenRepository childrenRepository =
       ChildrenRepository(ChildrenDataProvider());
+  final RegistrationRepository registrationRepository =
+      RegistrationRepository(RegistrationDataProvider());
+  // final LoginRepository loginRepository = LoginRepository(LoginDataProvider());
   final AdminRepository adminRepository = AdminRepository(UserDataProvider());
 
   BlocOverrides.runZoned(
     () => runApp(
       ErdataApp(
         childrenRepository: childrenRepository,
+          registrationRepository: registrationRepository,
         adminRepository: adminRepository,
       ),
     ),
@@ -30,12 +37,14 @@ void main() {
 }
 
 class ErdataApp extends StatelessWidget {
-  final ChildrenRepository childrenRepository;
-  final AdminRepository adminRepository;
+    final ChildrenRepository childrenRepository;
+    final RegistrationRepository registrationRepository;
+    final AdminRepository adminRepository;
 
   const ErdataApp(
       {Key? key,
       required this.childrenRepository,
+      required this.registrationRepository,
       required this.adminRepository})
       : super(key: key);
 
@@ -50,6 +59,10 @@ class ErdataApp extends StatelessWidget {
                 ChildrenBloc(childrenRepository: childrenRepository)
                   ..add(const ChildrenLoad()),
           ),
+          BlocProvider(
+          create: (context) =>
+              RegistrationBloc(registrationRepository: registrationRepository),
+        ),
           BlocProvider(
             create: (context) => AdminBloc(adminRepository: adminRepository)
               ..add(const UserListLoad()),
