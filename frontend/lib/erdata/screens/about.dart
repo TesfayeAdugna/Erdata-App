@@ -12,7 +12,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HeaderBar(
-        title: " ",
+        title: "ABOUT US",
         appBar: AppBar(),
       ),
       drawer: const DrawerExtends(

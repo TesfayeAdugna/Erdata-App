@@ -95,7 +95,7 @@ class DrawerExtends extends StatelessWidget {
             iconColor: Colors.blue,
             selectedColor: Color.fromARGB(255, 75, 4, 167),
             leading: Icon(Icons.app_registration_rounded),
-            title: Text("Signup"),
+            title: Text("SIGNUP"),
             onTap: () {
               context.go('/user_registration');
             },
@@ -104,7 +104,7 @@ class DrawerExtends extends StatelessWidget {
             iconColor: Colors.blue,
             selectedColor: Color.fromARGB(255, 75, 4, 167),
             leading: Icon(Icons.admin_panel_settings_rounded),
-            title: Text("ADMIN"),
+            title: Text("DASHBOARD"),
             onTap: () {
               context.go('/admin_screen');
             },

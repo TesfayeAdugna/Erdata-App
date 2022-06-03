@@ -6,6 +6,7 @@ import 'package:sec_2/admin/bloc/admin_bloc.dart';
 import 'package:sec_2/admin/bloc/admin_state.dart';
 
 import '../../../custom_widget/drawers.dart';
+import '../../custom_widget/header.dart';
 
 class UsersList extends StatelessWidget {
   UsersList({Key? key}) : super(key: key);
@@ -15,16 +16,26 @@ class UsersList extends StatelessWidget {
     return SafeArea(
       child: LayoutBuilder(
         builder: ((context, constraints) => Scaffold(
-              appBar: AppBar(
-                title: Text(""),
-                toolbarHeight: 80,
-                flexibleSpace: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Card(
+              appBar: HeaderBar(
+                title: "Dashboard",
+                appBar: AppBar(),
+              ),
+              drawer: const DrawerExtends(
+                color: Colors.black,
+              ),
+              body: ListView(
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      // The three buttons on Dashboard page.
+                      // 1
+                      Container(
+                        width: 200,
+                        height: 50,
+                        child: Card(
                           child: ElevatedButton(
                             child: Text("Register Child"),
                             onPressed: () {
@@ -32,46 +43,65 @@ class UsersList extends StatelessWidget {
                             },
                           ),
                         ),
-                        SizedBox(width: 10),
-                        Card(
+                      ),
+                      // 2
+                      Container(
+                        width: 200,
+                        height: 50,
+                        child: Card(
                           child: ElevatedButton(
-                            child: Text("Add User"),
+                            child: Text("See suggestions"),
                             onPressed: () {
-                              context.go('/user_registration');
+                              // context.go('/child_registration');
                             },
                           ),
                         ),
-                      ]),
-                ),
+                      ),
+                      // 3
+                      Container(
+                        width: 200,
+                        height: 50,
+                        child: Card(
+                          child: ElevatedButton(
+                            child: Text("See User List"),
+                            onPressed: () {
+                              
+                              // context.go('/child_registration');
+                            },
+                          ),
+                        ),
+                      ),
+
+                      // fetching from backend starts here.
+                      BlocConsumer<AdminBloc, AdminState>(
+                        listener: (_, AdminState state) {},
+                        builder: (_, AdminState state) {
+                          if (state is UserListLoading) {
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          if (state is UserListLoadFailure) {
+                            return Center(
+                              child: Text("Couldnot fetch children list"),
+                            );
+                          }
+                          if (state is UserListLoadSucccess) {
+                            final user = state.users;
+                            return ListView.builder(
+                                itemCount: user.length,
+                                itemBuilder: (_, int index) {
+                                  return GestureDetector(
+                                      onTap: () {}, child: ListTile());
+                                });
+                          }
+                          return Text("Not handled State");
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              drawer: const DrawerExtends(
-                color: Colors.black,
-              ),
-              body: BlocConsumer<AdminBloc, AdminState>(
-                listener: (_, AdminState state) {},
-                builder: (_, AdminState state) {
-                  if (state is UserListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  if (state is UserListLoadFailure) {
-                    return Center(
-                      child: Text("Couldnot fetch children list"),
-                    );
-                  }
-                  if (state is UserListLoadSucccess) {
-                    final user = state.users;
-                    return ListView.builder(
-                        itemCount: user.length,
-                        itemBuilder: (_, int index) {
-                          return GestureDetector(onTap: () {}, child: ListTile());
-                        });
-                  }
-                  return Text("Not handled State");
-                },
-              ),
-             
             )),
       ),
     );
