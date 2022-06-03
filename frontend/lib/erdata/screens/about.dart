@@ -5,6 +5,9 @@ class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
   final whiteColor = Colors.white;
   final String text = "hello";
+  final String contact =
+      "PHONE NUMBER: +251 92312223 \n TELEGRAM : https://telegram.me/Ashbel0 \n EMAIL: arunokijonathan@gmail.com \n INSTAGRAM: https://instagram.com/tesfishadugna/ \n FACEBOOK: https://facebook.com/people/Tesfaye-Adugna/100077814634008/ \n ";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +54,16 @@ class About extends StatelessWidget {
                     ),
                     child: Text(
                         "We are an intrinsic part of civil society. Our work is based on the personal initiative and activity of our team and volunteers, both in Addis Ababa and in the dozens of other cities where we operate, as well as the trust and support we are endowed with by individuals, businesses, governments and international institutions."),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color.fromARGB(255, 180, 226, 249),
+                    ),
+                    child: Text(contact),
                   ),
                 ],
               ),

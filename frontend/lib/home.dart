@@ -36,6 +36,8 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(10.0),
                 height: 300,
                 width: double.infinity,
+                // width: MediaQuery.of(context).size.width,
+                // height: MediaQuery.of(context).size.height * 0.4,
                 decoration: BoxDecoration(
                     color: Color.fromARGB(255, 71, 52, 52).withOpacity(0.8),
                     borderRadius: BorderRadius.circular(25.0)),

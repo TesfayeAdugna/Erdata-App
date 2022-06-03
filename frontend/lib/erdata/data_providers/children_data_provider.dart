@@ -1,4 +1,4 @@
-import '../models/childred_model.dart';
+import '../models/children_model.dart';
 
 abstract class ChildrenProvider {
   Future<Children> create(Children children);

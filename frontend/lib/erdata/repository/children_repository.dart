@@ -1,6 +1,5 @@
 import 'package:sec_2/erdata/data_providers/data_provider.dart';
 
-
 import '../models/model.dart';
 
 class ChildrenRepository {
@@ -9,35 +8,35 @@ class ChildrenRepository {
 
   Future<Children> create(Children children) async {
     final addedChild = Children(
-      id: children.id,
-      first_name: children.first_name,
-     last_name: children.last_name, 
-     photos: children.photos, 
-     gender: children.gender,
-      birth_date: children.birth_date, 
-      description: children.description, 
-      bank_account: children.bank_account, 
-      kebele: children.kebele,
-       region: children.region,
+        id: children.id,
+        first_name: children.first_name,
+        last_name: children.last_name,
+        photos: children.photos,
+        gender: children.gender,
+        birth_date: children.birth_date,
+        description: children.description,
+        bank_account: children.bank_account,
+        kebele: children.kebele,
+        region: children.region,
         woreda: children.woreda,
-         zone: children.zone);
+        zone: children.zone);
     return await childrenProvider.create(addedChild);
   }
 
   Future<Children> update(int id, Children children) async {
-   final addedChild = Children(
-     id: children.id,
-     first_name: children.first_name,
-     last_name: children.last_name, 
-     photos: children.photos, 
-     gender: children.gender,
-      birth_date: children.birth_date, 
-      description: children.description, 
-      bank_account: children.bank_account, 
-      kebele: children.kebele,
-       region: children.region,
+    final addedChild = Children(
+        id: children.id,
+        first_name: children.first_name,
+        last_name: children.last_name,
+        photos: children.photos,
+        gender: children.gender,
+        birth_date: children.birth_date,
+        description: children.description,
+        bank_account: children.bank_account,
+        kebele: children.kebele,
+        region: children.region,
         woreda: children.woreda,
-         zone: children.zone);
+        zone: children.zone);
     return await childrenProvider.create(addedChild);
   }
 

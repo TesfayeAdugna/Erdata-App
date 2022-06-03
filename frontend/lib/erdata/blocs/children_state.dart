@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../models/childred_model.dart';
+import '../models/children_model.dart';
 
 abstract class ChildrenState extends Equatable {
   const ChildrenState();

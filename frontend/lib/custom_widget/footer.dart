@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Footer extends StatelessWidget {
@@ -22,13 +23,14 @@ class Footer extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () async {
-                  String telephoneNum = '+251 921787397';
-                  String telephoneUrl = "sms: $telephoneNum";
-                  if (await canLaunchUrlString(telephoneUrl)) {
-                    await launchUrlString(telephoneUrl);
-                  } else {
-                    throw " Error occured connecting to that cell number.";
-                  }
+                  // String telephoneNum = '+251 921787397';
+                  // String telephoneUrl = "sms: $telephoneNum";
+                  // if (await canLaunchUrlString(telephoneUrl)) {
+                  //   await launchUrlString(telephoneUrl);
+                  // } else {
+                  //   throw " Error occured connecting to that cell number.";
+                  // }
+                  context.go('/about');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -44,12 +46,13 @@ class Footer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  String TelegramUrl = "https:telegram.me/Ashbel0";
-                  if (await canLaunchUrlString(TelegramUrl)) {
-                    await launchUrlString(TelegramUrl);
-                  } else {
-                    throw " Error occured connecting to the Telegram.";
-                  }
+                  // String TelegramUrl = "https:telegram.me/Ashbel0";
+                  // if (await canLaunchUrlString(TelegramUrl)) {
+                  //   await launchUrlString(TelegramUrl);
+                  // } else {
+                  //   throw " Error occured connecting to the Telegram.";
+                  // }
+                  context.go('/about');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -65,13 +68,14 @@ class Footer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  String FacebookUrl =
-                      "https:facebook.com/people/Tesfaye-Adugna/100077814634008/";
-                  if (await canLaunchUrlString(FacebookUrl)) {
-                    await launchUrlString(FacebookUrl);
-                  } else {
-                    throw " Error occured connecting to the Facebook.";
-                  }
+                  // String FacebookUrl =
+                  //     "https:facebook.com/people/Tesfaye-Adugna/100077814634008/";
+                  // if (await canLaunchUrlString(FacebookUrl)) {
+                  //   await launchUrlString(FacebookUrl);
+                  // } else {
+                  //   throw " Error occured connecting to the Facebook.";
+                  // }
+                  context.go('/about');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -87,12 +91,13 @@ class Footer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  String InstagramUrl = "https:instagram.com/tesfishadugna/";
-                  if (await canLaunchUrlString(InstagramUrl)) {
-                    await launchUrlString(InstagramUrl);
-                  } else {
-                    throw " Error occured connecting to the Instagram.";
-                  }
+                  // String InstagramUrl = "https:instagram.com/tesfishadugna/";
+                  // if (await canLaunchUrlString(InstagramUrl)) {
+                  //   await launchUrlString(InstagramUrl);
+                  // } else {
+                  //   throw " Error occured connecting to the Instagram.";
+                  // }
+                  context.go('/about');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -108,17 +113,18 @@ class Footer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  String EmailAddress = 'arunokijonathan@gmail.com';
-                  String EmailSubject = " Erdata app, comments and Questions";
-                  String EmailBody = " Dear Erdata App Developers, \n";
+                  // String EmailAddress = 'arunokijonathan@gmail.com';
+                  // String EmailSubject = " Erdata app, comments and Questions";
+                  // String EmailBody = " Dear Erdata App Developers, \n";
 
-                  String EmailUrl =
-                      "mailto: $EmailAddress?subject=$EmailSubject&body=$EmailBody";
-                  if (await canLaunchUrlString(EmailUrl)) {
-                    await launchUrlString(EmailUrl);
-                  } else {
-                    throw " Error occured connecting to the Email.";
-                  }
+                  // String EmailUrl =
+                  //     "mailto: $EmailAddress?subject=$EmailSubject&body=$EmailBody";
+                  // if (await canLaunchUrlString(EmailUrl)) {
+                  //   await launchUrlString(EmailUrl);
+                  // } else {
+                  //   throw " Error occured connecting to the Email.";
+                  // }
+                  context.go('/about');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
