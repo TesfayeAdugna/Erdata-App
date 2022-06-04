@@ -56,7 +56,8 @@ class ErdataApp extends StatelessWidget {
       {Key? key,
       required this.childrenRepository,
       required this.registrationRepository,
-      required this.userBERepository, required this.suggestionRepository})
+      required this.userBERepository,
+      required this.suggestionRepository})
       : super(key: key);
 
   @override
@@ -79,8 +80,9 @@ class ErdataApp extends StatelessWidget {
               ..add(const UserListLoad()),
           ),
           BlocProvider(
-            create: (context) => SuggestionBloc(suggestionRepository: suggestionRepository)
-              ..add(SuggestionLoad()),
+            create: (context) =>
+                SuggestionBloc(suggestionRepository: suggestionRepository)
+                  ..add(SuggestionLoad()),
           ),
         ],
         child: MaterialApp.router(
@@ -110,7 +112,18 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       key: state.pageKey,
       child: ChildrenList(),
     ),
+    
   ),
+  GoRoute(
+  name: 'detailsRouteName',
+  // 2
+  path: '/children_list/:id',
+  // 3
+  redirect: (state) => state.namedLocation(
+    'subDetailsRouteName',
+    params: {'id': state.params['id']!},
+  ),
+),
   GoRoute(
     name: 'user_list',
     path: '/user_list',
