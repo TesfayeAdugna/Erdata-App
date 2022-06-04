@@ -49,6 +49,9 @@ dependencies:
   bloc_test: ^9.0.3
   mockito: ^5.2.0
   image_picker: ^0.8.5+3
+  sqflite: ^2.0.2+1
+  sqlbrite: ^2.0.0
+  path_provider: ^2.0.10
   
 
 
