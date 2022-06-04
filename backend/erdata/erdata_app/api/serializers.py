@@ -9,7 +9,6 @@ class ChildrenSerializer(serializers.ModelSerializer):
 
 
 class SuggestionSerializer(serializers.ModelSerializer):
-    suggested_by = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Suggestion
         exclude = []

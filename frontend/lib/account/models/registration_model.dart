@@ -22,6 +22,7 @@ class Registration {
         last_name: json["last_name"],
         email: json["email"],
         password: json["password"],
-        password2: json["password2"]);
+        password2: json["password2"]
+        );
   }
 }

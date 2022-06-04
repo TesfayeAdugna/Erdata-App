@@ -1,27 +1,24 @@
 class Suggestion {
   int? id;
-  String suggested_by;
-  String date;
+  String? regesterd_date;
   String child_name;
   String gender;
-  String brith_date;
+  int age;
   String description;
   Suggestion(
       {this.id,
-      required this.suggested_by,
-      required this.date,
+      this.regesterd_date,
       required this.child_name,
       required this.gender,
-      required this.brith_date,
+      required this.age,
       required this.description});
   factory Suggestion.fromJson(Map<String, dynamic> json) {
     return Suggestion(
         id: json["id"],
-        suggested_by: json["suggested_by"],
-        date: json["date"],
+        regesterd_date: json["regesterd_date"],
         child_name: json["child_name"],
         gender: json["gender"],
-        brith_date: json["brith_date"],
+        age: json["age"],
         description: json["description"]);
   }
 }

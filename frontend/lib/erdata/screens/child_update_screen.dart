@@ -7,9 +7,7 @@ import '../models/suggestion.dart';
 class ChildrenUpdate extends StatelessWidget {
   ChildrenUpdate({Key? key, required this.suggested}) : super(key: key) {
     childnameController.text = suggested.child_name;
-    dateController.text = suggested.date;
-    birthdateController.text = suggested.brith_date;
-    usernameController.text = suggested.suggested_by;
+    // birthdateController.text = suggested.age;
     storyController.text = suggested.description;
   }
   final Suggestion suggested;

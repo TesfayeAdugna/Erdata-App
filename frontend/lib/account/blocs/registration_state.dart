@@ -12,12 +12,6 @@ abstract class RegistrationState extends Equatable {
 class Idler extends RegistrationState {}
 
 class RegistrationOperationSuccess extends RegistrationState {
-  final Registration registrations;
-
-  const RegistrationOperationSuccess(this.registrations);
-
-  @override
-  List<Object> get props => [registrations];
 }
 
 class RegistrationOperationFailure extends RegistrationState {

@@ -26,9 +26,8 @@ class Suggestion(models.Model):
     child_name = models.CharField(max_length=30)
     gender_choices = (('male', 'male'), ('female', 'female'))
     gender = models.CharField(max_length=10,choices = gender_choices)
-    brith_date = models.DateField()
+    age = models.PositiveIntegerField()
     description = models.TextField()
-    suggested_by = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.child_name
