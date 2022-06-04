@@ -1,3 +1,5 @@
+import 'package:sec_2/erdata/screens/screens.dart';
+
 class Children {
   int? id;
   String first_name;
@@ -39,4 +41,8 @@ class Children {
         zone: json["zone"],
         woreda: json["woreda"]);
   }
+
+  // Map<String, dynamic> toJson() {
+  //   return ;
+  // }
 }
