@@ -112,7 +112,18 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       key: state.pageKey,
       child: ChildrenList(),
     ),
+    
   ),
+  GoRoute(
+  name: 'detailsRouteName',
+  // 2
+  path: '/children_list/:id',
+  // 3
+  redirect: (state) => state.namedLocation(
+    'subDetailsRouteName',
+    params: {'id': state.params['id']!},
+  ),
+),
   GoRoute(
     name: 'user_list',
     path: '/user_list',

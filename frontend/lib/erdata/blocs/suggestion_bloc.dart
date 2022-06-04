@@ -6,13 +6,15 @@ import 'blocs.dart';
 class SuggestionBloc extends Bloc<SuggestionEvent, SuggestionState> {
   final SuggestionRepository suggestionRepository;
 
-  SuggestionBloc({required this.suggestionRepository}) : super(SuggestionLoading()) {
+  SuggestionBloc({required this.suggestionRepository})
+      : super(SuggestionLoading()) {
     on<SuggestionLoad>((event, emit) async {
       emit(SuggestionLoading());
       try {
         final suggestions = await suggestionRepository.fetchAll();
         emit(SuggestionOperationSuccess(suggestions));
       } catch (error) {
+        print(error);
         emit(SuggestionOperationFailure(error));
       }
     });

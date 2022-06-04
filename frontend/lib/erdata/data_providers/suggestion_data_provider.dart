@@ -12,12 +12,11 @@ class SuggestionDataProvider {
         body: jsonEncode({
           "child_name": suggestion.child_name,
           "gender": suggestion.gender,
-          "birth_date": suggestion.brith_date,
+          "age": suggestion.age,
           "description": suggestion.description,
-          "suggested_by": suggestion.suggested_by
         }));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return Suggestion.fromJson(jsonDecode(response.body));
     }
     {

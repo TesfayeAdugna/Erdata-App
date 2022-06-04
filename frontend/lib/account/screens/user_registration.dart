@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sec_2/account/blocs/blocs.dart';
+import 'package:sec_2/account/blocs/registration_state.dart';
 import 'package:sec_2/account/data_providers/data_providers.dart';
 import 'package:sec_2/account/models/model.dart';
 import 'package:sec_2/account/repository/registration_repository.dart';
@@ -19,6 +21,7 @@ class UserRegistrationScreen extends StatefulWidget {
 class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
   dynamic validate;
+  String change = 'Register';
   final Map<String, dynamic> _register = {};
   @override
   Widget build(BuildContext context) {
@@ -171,6 +174,20 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 SizedBox(
                   height: 24.0,
                 ),
+                BlocConsumer<RegistrationBloc, RegistrationState>(
+                  listener: (context, state) {
+                    if (state is RegistrationOperationFailure) {
+                      return context.goNamed("home");
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is RegistrationOperationSuccess) {
+                      change = "succesfully registered";
+                      return Text('');
+                    }
+                    return Text('');
+                  },
+                ),
                 RoundedButton(
                   onPressed: () {
                     final form = _formKey.currentState;
@@ -190,7 +207,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                       //     CoursesList.routeName, (route) => false);
                     }
                   },
-                  text: 'Register',
+                  text: change,
                   color: Colors.teal.shade500,
                 ),
               ],
