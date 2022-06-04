@@ -19,8 +19,12 @@ class _HomePageState extends State<HomePage> {
     fontSize: 18,
   );
 
+  var sizes;
+
   @override
   Widget build(BuildContext context) {
+    sizes = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         appBar: HeaderBar(

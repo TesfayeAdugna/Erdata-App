@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-// import 'package:sec_2/erdata/screens/children.dart';
 
-// import 'package:sec_2/home.dart';
+import 'package:sec_2/erdata/screens/about.dart';
 
 void main() {
-  testWidgets('About Has the corresponding title name and sub-widget',
-      (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-      appBar: HeaderBar(title: 'ABOUT US', appBar: AppBar()),
-    )));
+  Widget currentWidget() {
+    return const MaterialApp(
+      title: 'ERDATA',
+      home: About(),
+    );
+  }
+
+  testWidgets("about us page has title matches", (WidgetTester tester) async {
+    await tester.pumpWidget(currentWidget());
+    expect(find.text('ABOUT US'), findsOneWidget);
 
     // finding those titles
     expect(find.text('ABOUT US'), findsOneWidget);
@@ -24,13 +26,15 @@ void main() {
 
     expect(find.byWidget(contWidget), findsOneWidget);
   });
-  testWidgets("About drawer check", (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(
-        home: Drawer(
-      child: Text("LOG IN"),
-    )));
+
+  testWidgets("drawer check", (WidgetTester tester) async {
+    await tester.pumpWidget(currentWidget());
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pump();
 
     expect(find.text('LOG IN'), findsOneWidget);
+    expect(find.text('HOME'), findsOneWidget);
   });
 
   testWidgets("About footer check", (WidgetTester tester) async {
