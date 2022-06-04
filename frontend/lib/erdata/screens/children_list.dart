@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/erdata/blocs/blocs.dart';
 import 'package:go_router/go_router.dart';
-import '../../custom_widget/header.dart';
+import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:sec_2/erdata/models/model.dart';
 import '../blocs/blocs.dart';
-import '../../custom_widget/drawers.dart';
 
 class ChildrenList extends StatelessWidget {
-  ChildrenList({Key? key}) : super(key: key);
+  ChildrenList({Key? key, children}) : super(key: key);
   PageController pageController = PageController(viewportFraction: 0.85);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,14 +38,12 @@ class ChildrenList extends StatelessWidget {
                   if (state is ChildrenOperationSuccess) {
                     final children = state.childrens;
                     return PageView.builder(
-                      controller: pageController,
-                      scrollDirection: Axis.vertical,
+                        controller: pageController,
+                        scrollDirection: Axis.vertical,
                         itemCount: children.length,
                         itemBuilder: (_, int index) {
                           return GestureDetector(
-                            onTap: () {
-                              
-                            },
+                            onTap: () {},
                             child: Stack(
                               alignment: Alignment(1.0, 1.0),
                               children: [

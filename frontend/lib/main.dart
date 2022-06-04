@@ -56,7 +56,8 @@ class ErdataApp extends StatelessWidget {
       {Key? key,
       required this.childrenRepository,
       required this.registrationRepository,
-      required this.userBERepository, required this.suggestionRepository})
+      required this.userBERepository,
+      required this.suggestionRepository})
       : super(key: key);
 
   @override
@@ -79,8 +80,9 @@ class ErdataApp extends StatelessWidget {
               ..add(const UserListLoad()),
           ),
           BlocProvider(
-            create: (context) => SuggestionBloc(suggestionRepository: suggestionRepository)
-              ..add(SuggestionLoad()),
+            create: (context) =>
+                SuggestionBloc(suggestionRepository: suggestionRepository)
+                  ..add(SuggestionLoad()),
           ),
         ],
         child: MaterialApp.router(
@@ -167,24 +169,6 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       child: SuggestedList(),
     ),
   ),
-  //  GoRoute(
-  //   name: 'child_update',
-  //   path: '/child_update',
-  //   pageBuilder: (BuildContext context, state) => MaterialPage(
-  //     key: state.pageKey,
-  //     child: ChildrenUpdate(),
-  //   ),
-  // ),
-  // GoRoute(
-  //     name: 'children_detail',
-  //     path: '/children_detail',
-  //     pageBuilder: (BuildContext context, state) {
-  //       final Children children;
-  //       return MaterialPage(
-  //         key: state.pageKey,
-  //         child: Child_Detail(child: children),
-  //       );
-  //     }),
   GoRoute(
     name: 'about',
     path: '/about',
@@ -202,26 +186,3 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
     ),
   ),
 ]);
-
-// Page<dynamic> _errorBuilder(BuildContext context, GoRouterState state) =>
-//     MaterialPage<ErrorPage>(
-//       key: state.pageKey,
-//       child: ErrorPage(error: '',),
-//     );
-
-// class ErrorPage extends StatelessWidget {
-//   final String error;
-//   ErrorPage({required this.error});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // TODO: implement build
-//     return Text("Some error");
-
-//   }
-// }
-
-// Future<ChildrenRepository> child(String? id) async{
-  
-//   return ChildrenRepository(ChildrenDataProvider().fetchByid(id));
-// }

@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:sec_2/erdata/screens/children_list.dart';
+import 'package:sec_2/erdata/screens/child_detail.dart';
 
 void main() {
   // Build our app and trigger a frame.
 
   Widget currentWidget() {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'ERDATA',
-      home: ChildrenList(),
+      home: Child_Detail(
+        child: null,
+      ),
     );
   }
 
-  testWidgets("Children List title matches", (WidgetTester tester) async {
+  testWidgets("Children detail title matches", (WidgetTester tester) async {
     await tester.pumpWidget(currentWidget());
-    expect(find.text('CHILDREN LIST'), findsOneWidget);
-  });
-
-  testWidgets("drawer check", (WidgetTester tester) async {
-    await tester.pumpWidget(currentWidget());
-
-    await tester.tap(find.byIcon(Icons.menu));
-    await tester.pump();
-
-    expect(find.text('ABOUT'), findsOneWidget);
+    expect(find.text('children detail'), findsOneWidget);
   });
 
   testWidgets("footer check", (WidgetTester tester) async {

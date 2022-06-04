@@ -38,14 +38,7 @@ void main() {
   });
 
   testWidgets("About footer check", (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
-        home: Column(children: [
-      Text("PHONE"),
-      Text("INSTAGRAM"),
-      Text("EMAIL"),
-      Text("FACEBOOK"),
-      Text("TELEGRAM"),
-    ])));
+    await tester.pumpWidget(currentWidget());
 
     expect(find.text('PHONE'), findsOneWidget);
     expect(find.text('EMAIL'), findsOneWidget);
