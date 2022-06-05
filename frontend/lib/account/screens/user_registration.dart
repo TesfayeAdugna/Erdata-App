@@ -203,8 +203,6 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                             password: _register["password"]),
                       );
                       BlocProvider.of<RegistrationBloc>(context).add(event);
-                      // Navigator.of(context).pushNamedAndRemoveUntil(
-                      //     CoursesList.routeName, (route) => false);
                     }
                   },
                   text: change,

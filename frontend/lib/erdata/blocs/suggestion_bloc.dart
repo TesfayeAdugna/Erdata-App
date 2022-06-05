@@ -14,12 +14,12 @@ class SuggestionBloc extends Bloc<SuggestionEvent, SuggestionState> {
         final suggestions = await suggestionRepository.fetchAll();
         emit(SuggestionOperationSuccess(suggestions));
       } catch (error) {
-        print(error);
         emit(SuggestionOperationFailure(error));
       }
     });
 
     on<SuggestionCreate>((event, emit) async {
+      emit(SuggestionLoading());
       try {
         await suggestionRepository.create(event.suggestion);
         final suggestions = await suggestionRepository.fetchAll();

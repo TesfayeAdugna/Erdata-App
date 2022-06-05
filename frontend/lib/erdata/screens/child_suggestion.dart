@@ -65,55 +65,34 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                 SizedBox(
                   height: 24.0,
                 ),
-                // TextFormField(
-                //     validator: (value) {
-                //       if (value != null && value.isEmpty) {
-                //         return 'gender';
-                //       }
-                //       return null;
-                //     },
-                //     textAlign: TextAlign.center,
-                //     decoration: kTextFileDecoration.copyWith(
-                //       hintText: 'gender',
-                //     ),
-                //     onSaved: (value) {
-                //       setState(() {
-                //         _register["gender"] = value;
-                //       });
-                //     }),
-                DropdownButtonHideUnderline(
-                  child: DropdownButtonFormField2(
-                    hint: Text(
-                      'Gender',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).hintColor,
-                      ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter gender';
+                      }
+
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter gender',
                     ),
-                    items: gender
-                        .map((gender) => DropdownMenuItem<String>(
-                              value: gender,
-                              child: Text(
-                                gender,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (value) {},
-                    buttonHeight: 40,
-                    buttonWidth: 140,
-                    itemHeight: 40,
-                  ),
-                ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["gender"] = value;
+                      });
+                    }),
                 SizedBox(
                   height: 24.0,
                 ),
                 TextFormField(
+                    keyboardType: TextInputType.number,
                     validator: (value) {
                       if (value != null && value.isEmpty) {
-                        return 'age';
+                        return 'enter age';
+                      }
+                      if (double.tryParse(value!) == null) {
+                        return 'The input is not a numeric string';
                       }
                       return null;
                     },
@@ -136,7 +115,10 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                       if (value != null && value.isEmpty) {
                         return 'enter description';
                       }
-                      return null;
+                      final validdescription = value!.length > 20;
+                      return validdescription
+                          ? null
+                          : "Desctiption length must be > 20";
                     },
                     textAlign: TextAlign.center,
                     decoration: kTextFileDecoration.copyWith(
@@ -164,18 +146,19 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                     return Text('');
                   },
                 ),
-                imageUpload(),
-                SizedBox(height: 20),
-                ElevatedButton(
-                    onPressed: () {
-                      scaffoldState.currentState!
-                          .showBottomSheet((context) => selectionbar());
+                // imageUpload(),
+                SizedBox(height: 10),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       scaffoldState.currentState!
+                //           .showBottomSheet((context) => selectionbar());
 
-                      // showBottomSheet(
-                      //     context: context,
-                      //     builder: (builder) => selectionbar());
-                    },
-                    child: Text("Upload Image")),
+                //       // showBottomSheet(
+                //       //     context: context,
+                //       //     builder: (builder) => selectionbar());
+                //     },
+                //     child: Text("Upload Image")),
+
                 RoundedButton(
                   onPressed: () {
                     final form = _formKey.currentState;
@@ -187,14 +170,14 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                         age: _register["age"],
                         description: _register["description"],
                       ));
-                      BlocProvider.of<SuggestionBloc>(context)
-                          .add(SuggestionLoad());
-                      // Navigator.of(context).pushNamedAndRemoveUntil(
-                      //     CoursesList.routeName, (route) => false);
+                      BlocProvider.of<SuggestionBloc>(context).add(event);
                     }
                   },
                   text: change,
                   color: Colors.teal.shade500,
+                ),
+                SizedBox(
+                  height: 200,
                 ),
               ],
             ),
@@ -204,62 +187,63 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
     );
   }
 
-  Widget imageUpload() {
-    return Container(
-      height: 100,
-      width: 100,
-      child: Image(
-          image: _image == (null)
-              ? AssetImage("assets/logo3.jpg")
-              : AssetImage(_image.path)),
-    );
-  }
+//   Widget imageUpload() {
+//     return Container(
+//       height: 100,
+//       width: 100,
+//       child: Image(
+//           image: _image == (null)
+//               ? AssetImage("assets/logo3.jpg")
+//               : AssetImage(_image.path)),
+//     );
+//   }
 
-  Widget selectionbar() {
-    return Container(
-      color: Colors.grey[100],
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text("Choose Photo from"),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _picker.pickImage(source: ImageSource.camera);
-                        });
-                      },
-                      icon: Icon(Icons.camera),
-                    ),
-                    Text("Camera")
-                  ]),
-              SizedBox(width: 10),
-              Row(children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _picker.pickImage(source: ImageSource.gallery);
-                    });
-                  },
-                  icon: Icon(Icons.image),
-                ),
-                Text("Gallery")
-              ]),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+//   Widget selectionbar() {
+//     return Container(
+//       color: Colors.grey[100],
+//       height: 100,
+//       width: MediaQuery.of(context).size.width,
+//       margin: EdgeInsets.all(20),
+//       padding: EdgeInsets.all(10),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           Text("Choose Photo from"),
+//           SizedBox(height: 10),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Row(
+//                   mainAxisAlignment: MainAxisAlignment.center,
+//                   crossAxisAlignment: CrossAxisAlignment.center,
+//                   children: [
+//                     IconButton(
+//                       onPressed: () {
+//                         setState(() {
+//                           _picker.pickImage(source: ImageSource.camera);
+//                         });
+//                       },
+//                       icon: Icon(Icons.camera),
+//                     ),
+//                     Text("Camera")
+//                   ]),
+//               SizedBox(width: 10),
+//               Row(children: [
+//                 IconButton(
+//                   onPressed: () {
+//                     setState(() {
+//                       _picker.pickImage(source: ImageSource.gallery);
+//                     });
+//                   },
+//                   icon: Icon(Icons.image),
+//                 ),
+//                 Text("Gallery")
+//               ]),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 }
