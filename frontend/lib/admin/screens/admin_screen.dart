@@ -71,33 +71,6 @@ class AdminScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
-                      // fetching from backend starts here.
-                      // BlocConsumer<AdminBloc, AdminState>(
-                      //   listener: (_, AdminState state) {},
-                      //   builder: (_, AdminState state) {
-                      //     if (state is UserListLoading) {
-                      //       return Center(
-                      //         child: CircularProgressIndicator(),
-                      //       );
-                      //     }
-                      //     if (state is UserListLoadFailure) {
-                      //       return Center(
-                      //         child: Text("Couldnot fetch children list"),
-                      //       );
-                      //     }
-                      //     if (state is UserListLoadSucccess) {
-                      //       final user = state.users;
-                      //       return ListView.builder(
-                      //           itemCount: user.length,
-                      //           itemBuilder: (_, int index) {
-                      //             return GestureDetector(
-                      //                 onTap: () {}, child: ListTile());
-                      //           });
-                      //     }
-                      //     return Text("Not handled State");
-                      //   },
-                      // ),
                     ],
                   ),
                 ],

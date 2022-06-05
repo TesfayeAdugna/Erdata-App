@@ -25,9 +25,7 @@ class Child_Detail extends StatelessWidget {
                   final child = state.childrens.toList();
                   
                   final childsingle = child.where((children) => children.id == childid).first;
-                  // child.where((childsingle) {
-                  //   return childsingle
-                  // },);
+
                   return Center(
                     child: Stack(
                       alignment: Alignment(1.0, 1.0),
@@ -50,10 +48,7 @@ class Child_Detail extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            // child: CircleAvatar(
-                            //   backgroundImage: AssetImage("assets/child_1.jpg"),
-                            //   radius: 50,
-                            // ),
+
                           ),
                         ),
                         Positioned(

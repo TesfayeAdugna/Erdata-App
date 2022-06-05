@@ -254,25 +254,5 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       child: AdminScreen(),
     ),
   ),
-  // GoRoute(
-  //   name: 'detailsRouteName',
-  //   // 2
-  //   path: '/children_list/:id',
-  //   pageBuilder: (BuildContext context, state) {
-  //     final code = state.params['id']!;
-  //     final id = int.parse(code.toString());
-  //     final res = ChildrenRepository(ChildrenDataProvider()).fetchById(id);
-  //     final Children child;
-  //     res.then((value) {child = ba});
-  //     return MaterialPage(
-  //       key: state.pageKey,
-  //       child: Child_Detail(child: res),
-  //     );
-  //   },
-  //   // 3
-  //   redirect: (state) => state.namedLocation(
-  //     'subDetailsRouteName',
-  //     params: {'id': state.params['id']!},
-  //   ),
-  // ),
+
 ]);

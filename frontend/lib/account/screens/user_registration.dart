@@ -9,7 +9,6 @@ import 'package:erdata/custom_widget/custom_widgets.dart';
 import 'package:erdata/erdata/screens/home.dart';
 import 'package:erdata/custom_widget/RoundButton.dart';
 
-// import '../constant.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
   static String id = 'registration';

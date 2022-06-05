@@ -19,27 +19,5 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
       }
     });
 
-    // on<UserAdd>((event, emit) async {
-    //   try {
-    //     await adminRepository.create(event.user);
-    //     final childrens = await adminRepository.fetchAll();
-    //     emit(UserListLoadSucccess(childrens));
-    //   } catch (error) {
-    //     emit(UserListLoadFailure(error));
-    //   }
-    // });
-
-    
-   
-
-    // on<UserDelete>((event, emit) async {
-    //   try {
-    //     await adminRepository.delete(event.id);
-    //     final childrens = await adminRepository.fetchAll();
-    //     emit(UserListLoadSucccess(childrens));
-    //   } catch (error) {
-    //     emit(UserListLoadFailure(error));
-    //   }
-    // });
   }
 }

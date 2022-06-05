@@ -6,8 +6,6 @@ import 'package:erdata/erdata/models/children_model.dart';
 
 import '../../custom_widget/custom_widgets.dart';
 
-// import '../constant.dart';
-
 class ChildrenRegistrationScreen extends StatefulWidget {
   static String id = 'registration';
   @override
@@ -94,7 +92,6 @@ class _ChildrenRegistrationScreenState
                         return 'please enter gender';
                       }
                       var check = value.toString();
-                      print(check);
                       if ((check.compareTo("male") == 0) ||
                           (check.compareTo("female") == 0)) {
                         return null;

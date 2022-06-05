@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:erdata/custom_widget/custom_widgets.dart';
-// import 'constant.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -119,12 +118,6 @@ class Profile extends StatelessWidget {
               ),
             ),
 
-            // Center(
-            //   child: Text(
-            //     'Description',
-            //     style: kTxtKeyStyle,
-            //   ),
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 18),
               child: Container(

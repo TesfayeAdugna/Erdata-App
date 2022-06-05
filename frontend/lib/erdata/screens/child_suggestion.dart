@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../custom_widget/custom_widgets.dart';
 import '../blocs/blocs.dart';
 import '../models/model.dart';

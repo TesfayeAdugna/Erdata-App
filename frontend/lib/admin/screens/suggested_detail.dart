@@ -27,9 +27,7 @@ class Suggested_Detail extends StatelessWidget {
                     final suggestedChild = suggested
                         .where((suggestion) => suggestion.id == suggestedid)
                         .first;
-                    // child.where((childsingle) {
-                    //   return childsingle
-                    // },);
+
                     return Center(
                       child: Stack(
                         alignment: Alignment(1.0, 1.0),
@@ -52,10 +50,7 @@ class Suggested_Detail extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              // child: CircleAvatar(
-                              //   backgroundImage: AssetImage("assets/child_1.jpg"),
-                              //   radius: 50,
-                              // ),
+
                             ),
                           ),
                           Positioned(

@@ -44,10 +44,7 @@ class UserDetail extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        // child: CircleAvatar(
-                        //   backgroundImage: AssetImage("assets/child_1.jpg"),
-                        //   radius: 50,
-                        // ),
+
                       ),
                     ),
                     Align(

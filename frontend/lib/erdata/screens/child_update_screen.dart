@@ -140,19 +140,6 @@ class ChildrenUpdation extends StatelessWidget {
                                     return "Short Story should not be empty";
                                   }
                                 }),
-                            // SizedBox(height: 20),
-                            // TextFormField(
-                            //     keyboardType: TextInputType.multiline,
-                            //     maxLines: null,
-                            //     controller: initiativeController,
-                            //     decoration: InputDecoration(
-                            //         hintText: "Your initiative to suggest",
-                            //         border: OutlineInputBorder()),
-                            //     validator: (String? username) {
-                            //       if (username == null || username.isEmpty) {
-                            //         return "Initiative should not be empty";
-                            //       }
-                            //     }),
 
                             SizedBox(height: 20),
                             TextFormField(
