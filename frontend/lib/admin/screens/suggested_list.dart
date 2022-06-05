@@ -7,7 +7,7 @@ import '../../custom_widget/drawers.dart';
 
 class SuggestedList extends StatelessWidget {
   SuggestedList({Key? key}) : super(key: key);
-  PageController pageController = PageController(viewportFraction: 0.90);
+  PageController pageController = PageController(viewportFraction: 0.85);
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -35,10 +35,15 @@ class SuggestedList extends StatelessWidget {
                 if (state is SuggestionOperationSuccess) {
                   final suggested = state.suggestions;
                   return PageView.builder(
+                    scrollDirection: Axis.vertical,
+                    controller: pageController,
                       itemCount: suggested.length,
                       itemBuilder: (_, int index) {
                         return GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                             context.go(
+                                  "/suggested_list/${suggested.elementAt(index).id}");
+                          },
                           child: Stack(
                             alignment: Alignment(1.0, 1.0),
                             children: [
@@ -135,7 +140,13 @@ class SuggestedList extends StatelessWidget {
                 return const Text("Not handled State");
               },
             ),
-          )),
+            floatingActionButton: FloatingActionButton(
+                  onPressed: () {
+                    return context.goNamed("child_suggestion");
+                  },
+                  child: const Icon(Icons.add)),
+          )
+          ),
     );
   }
 }

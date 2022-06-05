@@ -1,19 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sec_2/account/blocs/authenticate_bloc/authenticate.dart';
+import 'package:sec_2/account/blocs/blocs.dart';
 import 'package:sec_2/account/data_providers/data_providers.dart';
 import 'package:sec_2/account/repository/repository.dart';
+import 'package:sec_2/account/repository/user_repository.dart';
 import 'package:sec_2/admin/bloc/admin_bloc.dart';
 import 'package:sec_2/admin/bloc/admin_event.dart';
-import 'package:sec_2/admin/data_provider/user_local_provider.dart';
-import 'package:sec_2/admin/repository/admin_repository.dart';
+import 'package:sec_2/admin/screens/suggested_detail.dart';
 import 'package:sec_2/admin/screens/suggested_list.dart';
 import 'package:sec_2/admin/screens/user_list_admin.dart';
 import 'package:sec_2/erdata/blocs/blocs.dart';
-import 'package:sec_2/erdata/models/model.dart';
 import 'package:sec_2/erdata/repository/suggestion_repository.dart';
+import 'package:sec_2/erdata/screens/child_update_screen.dart';
 import './erdata/data_providers/data_provider.dart';
-import 'account/blocs/registration_bloc.dart';
-import 'account/data_providers/registration_data_provider.dart';
-import 'account/repository/registration_repository.dart';
 import 'admin/screens/admin.dart';
 import '../erdata/screens/screens.dart';
 import 'erdata/repository/children_repository.dart';
@@ -33,6 +32,9 @@ void main() {
       UserBERepository(UserBEDataProvider());
   final SuggestionRepository suggestionRepository =
       SuggestionRepository(SuggestionDataProvider());
+  final UserRepository userRepository = UserRepository();
+  final AuthenticationBloc authenticationBloc =
+      AuthenticationBloc(userRepository: userRepository);
 
   BlocOverrides.runZoned(
     () => runApp(
@@ -41,6 +43,8 @@ void main() {
         registrationRepository: registrationRepository,
         userBERepository: userBERepository,
         suggestionRepository: suggestionRepository,
+        authenticationBloc: authenticationBloc,
+        userRepository: userRepository,
       ),
     ),
   );
@@ -51,13 +55,17 @@ class ErdataApp extends StatelessWidget {
   final RegistrationRepository registrationRepository;
   final UserBERepository userBERepository;
   final SuggestionRepository suggestionRepository;
+  final UserRepository userRepository;
+  final AuthenticationBloc authenticationBloc;
 
   const ErdataApp(
       {Key? key,
       required this.childrenRepository,
       required this.registrationRepository,
       required this.userBERepository,
-      required this.suggestionRepository})
+      required this.suggestionRepository,
+      required this.authenticationBloc,
+      required this.userRepository})
       : super(key: key);
 
   @override
@@ -83,6 +91,12 @@ class ErdataApp extends StatelessWidget {
             create: (context) =>
                 SuggestionBloc(suggestionRepository: suggestionRepository)
                   ..add(SuggestionLoad()),
+          ),
+          BlocProvider(
+            create: (context) => LoginBloc(
+                userRepository: userRepository,
+                authenticationBloc: authenticationBloc)
+              ..add(LoginTrial()),
           ),
         ],
         child: MaterialApp.router(
@@ -112,17 +126,20 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       key: state.pageKey,
       child: ChildrenList(),
     ),
+    routes: [
+      GoRoute(
+      name: 'detailsRouteName',
+      path: ':id',
+      pageBuilder: (BuildContext context, state) {
+        final int id = int.parse(state.params['id']!);
+        return MaterialPage(
+          key: state.pageKey,
+          child: Child_Detail(childid: id),
+        );
+      }),
+    ]
   ),
-  GoRoute(
-    name: 'detailsRouteName',
-    // 2
-    path: '/children_list/:id',
-    // 3
-    redirect: (state) => state.namedLocation(
-      'subDetailsRouteName',
-      params: {'id': state.params['id']!},
-    ),
-  ),
+  
   GoRoute(
     name: 'user_list',
     path: '/user_list',
@@ -130,6 +147,18 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       key: state.pageKey,
       child: UsersList(),
     ),
+    routes: [
+      GoRoute(
+      name: 'usersdetal',
+      path: ':id',
+      pageBuilder: (BuildContext context, state) {
+        final int id = int.parse(state.params['id']!);
+        return MaterialPage(
+          key: state.pageKey,
+          child: UserDetail(userid: id),
+        );
+      }),
+    ]
   ),
   GoRoute(
     name: 'user_registration',
@@ -178,6 +207,36 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       key: state.pageKey,
       child: SuggestedList(),
     ),
+    routes: [
+      GoRoute(
+      name: 'suggested_detail',
+      path: ':id',
+      pageBuilder: (BuildContext context, state) {
+        final int id = int.parse(state.params['id']!);
+        return MaterialPage(
+          key: state.pageKey,
+          child: Suggested_Detail(suggestedid: id),
+        );
+        },
+      routes: [
+      GoRoute(
+      name: 'children_update',
+      path: ':id',
+      pageBuilder: (BuildContext context, state) {
+        final int id = int.parse(state.params['id']!);
+        return MaterialPage(
+          key: state.pageKey,
+          child:ChildrenUpdation(suggestedid: id),
+        );
+
+      }
+      
+      ),
+
+    ]
+      ),
+
+    ]
   ),
   GoRoute(
     name: 'about',
@@ -195,4 +254,25 @@ final GoRouter _router = GoRouter(initialLocation: '/', routes: <GoRoute>[
       child: AdminScreen(),
     ),
   ),
+  // GoRoute(
+  //   name: 'detailsRouteName',
+  //   // 2
+  //   path: '/children_list/:id',
+  //   pageBuilder: (BuildContext context, state) {
+  //     final code = state.params['id']!;
+  //     final id = int.parse(code.toString());
+  //     final res = ChildrenRepository(ChildrenDataProvider()).fetchById(id);
+  //     final Children child;
+  //     res.then((value) {child = ba});
+  //     return MaterialPage(
+  //       key: state.pageKey,
+  //       child: Child_Detail(child: res),
+  //     );
+  //   },
+  //   // 3
+  //   redirect: (state) => state.namedLocation(
+  //     'subDetailsRouteName',
+  //     params: {'id': state.params['id']!},
+  //   ),
+  // ),
 ]);
