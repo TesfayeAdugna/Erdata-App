@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);

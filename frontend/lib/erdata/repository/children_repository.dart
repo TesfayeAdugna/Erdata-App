@@ -1,4 +1,4 @@
-import 'package:sec_2/erdata/data_providers/data_provider.dart';
+import 'package:erdata/erdata/data_providers/data_provider.dart';
 
 import '../models/model.dart';
 

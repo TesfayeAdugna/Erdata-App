@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
 // import 'constant.dart';
 
 class Profile extends StatelessWidget {

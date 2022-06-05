@@ -1,65 +1,63 @@
-// import 'package:sec_2/erdata/sql/database_children.dart';
-// import 'package:sec_2/erdata/data_providers/children_local_provider.dart';
-// import 'package:sec_2/erdata/models/children_model.dart';
-// import 'package:sec_2/erdata/repository/children_repository.dart';
+import 'package:erdata/erdata/sql/database_children.dart';
+import 'package:erdata/erdata/data_providers/children_local_provider.dart';
+import 'package:erdata/erdata/repository/children_repository.dart';
 
-// class SqlRepository extends ChildrenRepository {
-//   final databaseHelper = DatabaseHelper.instance;
+import '../models/children_model.dart';
 
-//   SqlRepository(ChildrenDataProvider childrenProvider)
-//       : super(childrenProvider);
+class SqlRepository extends ChildrenRepository {
+  final databaseHelper = DatabaseHelper.instance;
 
-//   Future<List<Children>> findAllChildren() {
-//     return databaseHelper.findAllChildren();
-//   }
+  SqlRepository(ChildrenDataProvider childrenProvider) : super(childrenProvider);
 
-//   Stream<List<Children>> watchAllChildren() {
-//     return databaseHelper.watchAllChildren();
-//   }
+  Future<List<Children>> findAllChildren() {
+    return databaseHelper.findAllChildren();
+  }
+  Stream<List<Children>> watchAllChildren() {
+    return databaseHelper.watchAllChildren();
+  }
+  Future<Children> findChildrenById(id) {
+    return databaseHelper.findChildrenById(id);
+  }
 
-//   Future<Children> findChildrenById(id) {
-//     return databaseHelper.findChildrenById(id);
-//   }
+  // inserting the children
+  Future<List<int>> insertChildren(List<Children> 
+    childrens) {
+    return Future(() async {
+    if (childrens.length != 0) {
+    // 1
+    final childrenIds = <int>[];
+    // 2
+    await Future.forEach(childrens, (Children children) 
+    async {
+    // 3
+    final futureId = await
+    databaseHelper.insertChildren(children);
+    children.id = futureId;
+    // 4
+    childrenIds.add(futureId);
+    });
+    // 5
+    return Future.value(childrenIds);
+    } else {
+    return Future.value(<int>[]);
+    }
+    });
+    }
 
-//   @override
-//   Future<List<int>> insertChildren(List<Children> childrens) {
-//     return Future(() async {
-//       if (childrens.length != 0) {
-//         // 1
-//         final childrenIds = <int>[];
-//         // 2
-//         await Future.forEach(childrens, (Children children) async {
-//           // 3
-//           final futureId = await databaseHelper.insertChildren(children);
-//           children.id = futureId;
-//           // 4
-//           childrenIds.add(futureId);
-//         });
-//         // 5
-//         return Future.value(childrenIds);
-//       } else {
-//         return Future.value(<int>[]);
-//       }
-//     });
-//   }
+    Future<void> deleteChildren(Children children) {
+    databaseHelper.deleteChildren(children);
+    // 3
+    return Future.value();
+    }
+    Future init() async {
+ // 1
+    await databaseHelper.database;
+    return Future.value();
+    }
+    
+void close() {
+ // 2
+    databaseHelper.close();
+    }
 
-//   @override
-//   Future<void> deleteChildren(Children children) {
-//     databaseHelper.deleteChildren(children);
-//     // 3
-//     return Future.value();
-//   }
-
-//   @override
-//   Future init() async {
-//     // 1
-//     await databaseHelper.database;
-//     return Future.value();
-//   }
-
-//   @override
-//   void close() {
-//     // 2
-//     databaseHelper.close();
-//   }
-// }
+}

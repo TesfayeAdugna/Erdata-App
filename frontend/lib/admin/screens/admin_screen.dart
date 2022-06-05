@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:sec_2/admin/bloc/admin_bloc.dart';
-import 'package:sec_2/admin/bloc/admin_state.dart';
+import 'package:erdata/admin/bloc/admin_bloc.dart';
+import 'package:erdata/admin/bloc/admin_state.dart';
 
 import '../../../custom_widget/drawers.dart';
 import '../../custom_widget/header.dart';

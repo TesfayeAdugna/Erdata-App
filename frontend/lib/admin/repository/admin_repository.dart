@@ -1,7 +1,7 @@
-import 'package:sec_2/admin/data_provider/user_data_provider.dart';
-import 'package:sec_2/erdata/data_providers/data_provider.dart';
+import 'package:erdata/admin/data_provider/user_data_provider.dart';
+import 'package:erdata/erdata/data_providers/data_provider.dart';
 
-import 'package:sec_2/account/models/registration_model.dart';
+import 'package:erdata/account/models/registration_model.dart';
 
 class AdminRepository {
   UserProvider userProvider;

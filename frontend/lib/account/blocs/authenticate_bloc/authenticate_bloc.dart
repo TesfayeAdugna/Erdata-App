@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:sec_2/account/repository/user_repository.dart';
+import 'package:erdata/account/repository/user_repository.dart';
 import 'authenticate.dart';
 
 class AuthenticationBloc

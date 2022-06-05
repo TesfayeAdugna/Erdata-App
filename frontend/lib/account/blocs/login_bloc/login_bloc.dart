@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:sec_2/account/repository/user_repository.dart';
+import 'package:erdata/account/repository/user_repository.dart';
 import 'login.dart';
 import '../authenticate_bloc/authenticate.dart';
 import '../../repository/login_repository.dart';

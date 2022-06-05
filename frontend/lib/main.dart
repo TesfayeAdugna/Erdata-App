@@ -1,26 +1,26 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/account/blocs/authenticate_bloc/authenticate.dart';
-import 'package:sec_2/account/blocs/blocs.dart';
-import 'package:sec_2/account/data_providers/data_providers.dart';
-import 'package:sec_2/account/repository/repository.dart';
-import 'package:sec_2/account/repository/user_repository.dart';
-import 'package:sec_2/admin/bloc/admin_bloc.dart';
-import 'package:sec_2/admin/bloc/admin_event.dart';
-import 'package:sec_2/admin/screens/suggested_detail.dart';
-import 'package:sec_2/admin/screens/suggested_list.dart';
-import 'package:sec_2/admin/screens/user_list_admin.dart';
-import 'package:sec_2/erdata/blocs/blocs.dart';
-import 'package:sec_2/erdata/repository/suggestion_repository.dart';
-import 'package:sec_2/erdata/screens/child_update_screen.dart';
+import 'package:erdata/account/blocs/authenticate_bloc/authenticate.dart';
+import 'package:erdata/account/blocs/blocs.dart';
+import 'package:erdata/account/data_providers/data_providers.dart';
+import 'package:erdata/account/repository/repository.dart';
+import 'package:erdata/account/repository/user_repository.dart';
+import 'package:erdata/admin/bloc/admin_bloc.dart';
+import 'package:erdata/admin/bloc/admin_event.dart';
+import 'package:erdata/admin/screens/suggested_detail.dart';
+import 'package:erdata/admin/screens/suggested_list.dart';
+import 'package:erdata/admin/screens/user_list_admin.dart';
+import 'package:erdata/erdata/blocs/blocs.dart';
+import 'package:erdata/erdata/repository/suggestion_repository.dart';
+import 'package:erdata/erdata/screens/child_update_screen.dart';
 import './erdata/data_providers/data_provider.dart';
 import 'admin/screens/admin.dart';
 import '../erdata/screens/screens.dart';
 import 'erdata/repository/children_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sec_2/home.dart';
+import 'package:erdata/erdata/screens/home.dart';
 import 'account/screens/logins.dart';
-import 'theme.dart';
+import 'custom_widget/theme.dart';
 
 void main() {
   final ChildrenRepository childrenRepository =

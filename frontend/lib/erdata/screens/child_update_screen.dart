@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:sec_2/erdata/blocs/blocs.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
+import 'package:erdata/erdata/blocs/blocs.dart';
 
 import '../models/suggestion.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sec_2/custom_widget/drawers.dart';
+import 'package:erdata/custom_widget/drawers.dart';
 
 class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
   const HeaderBar({Key? key, required this.title, required this.appBar})

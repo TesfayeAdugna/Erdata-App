@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:sec_2/account/models/model.dart';
+import 'package:erdata/account/models/model.dart';
 
 abstract class AdminState extends Equatable {
   const AdminState();

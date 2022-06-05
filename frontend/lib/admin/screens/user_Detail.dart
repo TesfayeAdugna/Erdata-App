@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/account/blocs/blocs.dart';
-import 'package:sec_2/account/models/model.dart';
+import 'package:erdata/account/blocs/blocs.dart';
+import 'package:erdata/account/models/model.dart';
 import '../../custom_widget/custom_widgets.dart';
 
 class UserDetail extends StatelessWidget {

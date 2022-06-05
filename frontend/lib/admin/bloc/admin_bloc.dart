@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/account/repository/registration_repository.dart';
-import 'package:sec_2/account/repository/repository.dart';
-import 'package:sec_2/admin/repository/admin_repository.dart';
+import 'package:erdata/account/repository/registration_repository.dart';
+import 'package:erdata/account/repository/repository.dart';
+import 'package:erdata/admin/repository/admin_repository.dart';
 import 'admin.dart';
 
 

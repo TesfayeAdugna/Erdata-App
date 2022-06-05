@@ -1,4 +1,4 @@
-import 'package:sec_2/account/models/model.dart';
+import 'package:erdata/account/models/model.dart';
 
 
 abstract class UserProvider {

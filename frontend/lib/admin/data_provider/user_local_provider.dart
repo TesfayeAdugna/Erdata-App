@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'package:sec_2/account/models/registration_model.dart';
-import 'package:sec_2/admin/data_provider/user_data_provider.dart';
+import 'package:erdata/account/models/registration_model.dart';
+import 'package:erdata/admin/data_provider/user_data_provider.dart';
 
 class UserDataProvider implements UserProvider{
   Future<Registration> create(Registration registration) async {

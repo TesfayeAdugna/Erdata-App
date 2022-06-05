@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sec_2/account/blocs/blocs.dart';
-import 'package:sec_2/account/blocs/registration_state.dart';
-import 'package:sec_2/account/data_providers/data_providers.dart';
-import 'package:sec_2/account/models/model.dart';
-import 'package:sec_2/account/repository/registration_repository.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
-import 'package:sec_2/home.dart';
-import 'package:sec_2/custom_widget/RoundButton.dart';
+import 'package:erdata/account/blocs/blocs.dart';
+import 'package:erdata/account/blocs/registration_state.dart';
+import 'package:erdata/account/data_providers/data_providers.dart';
+import 'package:erdata/account/models/model.dart';
+import 'package:erdata/account/repository/registration_repository.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
+import 'package:erdata/erdata/screens/home.dart';
+import 'package:erdata/custom_widget/RoundButton.dart';
 
 // import '../constant.dart';
 

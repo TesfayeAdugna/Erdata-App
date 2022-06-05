@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'package:sec_2/account/models/registration_model.dart';
+import 'package:erdata/account/models/registration_model.dart';
 
 abstract class AdminEvent extends Equatable {
   const AdminEvent();

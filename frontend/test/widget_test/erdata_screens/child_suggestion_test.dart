@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
-import 'package:sec_2/erdata/data_providers/suggestion_data_provider.dart';
-import 'package:sec_2/erdata/models/model.dart';
-import 'package:sec_2/erdata/repository/suggestion_repository.dart';
-import 'package:sec_2/erdata/screens/screens.dart';
+import 'package:erdata/erdata/data_providers/suggestion_data_provider.dart';
+import 'package:erdata/erdata/models/model.dart';
+import 'package:erdata/erdata/repository/suggestion_repository.dart';
+import 'package:erdata/erdata/screens/screens.dart';
 
 class MockChildSuggest extends Mock implements SuggestionRepository {}
 

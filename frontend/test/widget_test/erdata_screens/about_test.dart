@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
 
-import 'package:sec_2/erdata/screens/about.dart';
+import 'package:erdata/erdata/screens/about.dart';
 
 void main() {
   Widget currentWidget() {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:sec_2/admin/screens/admin.dart' as admin;
-import 'package:sec_2/admin/screens/admin_screen.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:erdata/admin/screens/admin.dart' as admin;
+import 'package:erdata/admin/screens/admin_screen.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

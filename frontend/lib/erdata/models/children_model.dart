@@ -1,4 +1,4 @@
-import 'package:sec_2/erdata/screens/screens.dart';
+import 'package:erdata/erdata/screens/screens.dart';
 
 class Children {
   int? id;

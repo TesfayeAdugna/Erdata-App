@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sec_2/erdata/blocs/blocs.dart';
+import 'package:erdata/erdata/blocs/blocs.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:erdata/custom_widget/custom_widgets.dart';
 
 import '../blocs/blocs.dart';
 
