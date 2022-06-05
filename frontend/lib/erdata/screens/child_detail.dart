@@ -69,7 +69,7 @@ class Child_Detail extends StatelessWidget {
                               ),
                               SizedBox(height: 20),
                               Text(
-                                "BirthDate ${child.birth_date}",
+                                "BirthDate ${child.age}",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
@@ -122,15 +122,7 @@ class Child_Detail extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 20),
-                              Text(
-                                "Account: ${child.bank_account}",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                             ],
                           ),
                         ),
                       ),

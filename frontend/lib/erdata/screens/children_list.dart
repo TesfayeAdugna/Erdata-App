@@ -94,7 +94,7 @@ class ChildrenList extends StatelessWidget {
                                             ),
                                             SizedBox(height: 20),
                                             Text(
-                                              "BirthDate: ${children.elementAt(index).birth_date}",
+                                              "Age: ${children.elementAt(index).age}",
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15,

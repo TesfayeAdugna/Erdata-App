@@ -70,8 +70,12 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                       if (value != null && value.isEmpty) {
                         return 'please enter gender';
                       }
-
-                      return null;
+                      var check = value.toString();
+                      if ((check.compareTo("male") == 0) ||
+                          (check.compareTo("female") == 0)) {
+                        return null;
+                      }
+                      return 'gender must be "male" or "female"';
                     },
                     textAlign: TextAlign.center,
                     decoration: kTextFileDecoration.copyWith(
@@ -146,19 +150,7 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
                     return Text('');
                   },
                 ),
-                // imageUpload(),
                 SizedBox(height: 10),
-                // ElevatedButton(
-                //     onPressed: () {
-                //       scaffoldState.currentState!
-                //           .showBottomSheet((context) => selectionbar());
-
-                //       // showBottomSheet(
-                //       //     context: context,
-                //       //     builder: (builder) => selectionbar());
-                //     },
-                //     child: Text("Upload Image")),
-
                 RoundedButton(
                   onPressed: () {
                     final form = _formKey.currentState;
@@ -186,64 +178,4 @@ class _ChildSuggestionState extends State<ChildSuggestion> {
       ),
     );
   }
-
-//   Widget imageUpload() {
-//     return Container(
-//       height: 100,
-//       width: 100,
-//       child: Image(
-//           image: _image == (null)
-//               ? AssetImage("assets/logo3.jpg")
-//               : AssetImage(_image.path)),
-//     );
-//   }
-
-//   Widget selectionbar() {
-//     return Container(
-//       color: Colors.grey[100],
-//       height: 100,
-//       width: MediaQuery.of(context).size.width,
-//       margin: EdgeInsets.all(20),
-//       padding: EdgeInsets.all(10),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           Text("Choose Photo from"),
-//           SizedBox(height: 10),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Row(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   crossAxisAlignment: CrossAxisAlignment.center,
-//                   children: [
-//                     IconButton(
-//                       onPressed: () {
-//                         setState(() {
-//                           _picker.pickImage(source: ImageSource.camera);
-//                         });
-//                       },
-//                       icon: Icon(Icons.camera),
-//                     ),
-//                     Text("Camera")
-//                   ]),
-//               SizedBox(width: 10),
-//               Row(children: [
-//                 IconButton(
-//                   onPressed: () {
-//                     setState(() {
-//                       _picker.pickImage(source: ImageSource.gallery);
-//                     });
-//                   },
-//                   icon: Icon(Icons.image),
-//                 ),
-//                 Text("Gallery")
-//               ]),
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 }

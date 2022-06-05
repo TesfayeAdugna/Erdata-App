@@ -9,21 +9,18 @@ class ChildrenDataProvider implements ChildrenProvider {
     const url = 'http://127.0.0.1:8000/erdata/children-create/';
     final http.Response response = await http.post(Uri.parse(url),
         headers: <String, String>{
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Content-Type": "application/json"
         },
         body: jsonEncode({
           "first_name": children.first_name,
           "last_name": children.last_name,
           "gender": children.gender,
-          "birth_date": children.birth_date,
+          "age": children.age,
           "description": children.description,
-          "bank_account": children.bank_account,
           "kebele": children.kebele,
           "woreda": children.woreda,
           "zone": children.zone,
           "region": children.region,
-          "photos": children.photos,
         }));
 
     if (response.statusCode == 201) {
@@ -67,14 +64,12 @@ class ChildrenDataProvider implements ChildrenProvider {
           "first_name": children.first_name,
           "last_name": children.last_name,
           "gender": children.gender,
-          "brith_date": children.birth_date,
+          "age": children.age,
           "description": children.description,
-          "bank_account": children.bank_account,
           "kebele": children.kebele,
           "woreda": children.woreda,
           "zone": children.zone,
           "region": children.region,
-          "photos": children.photos
         }));
 
     if (response.statusCode == 200) {

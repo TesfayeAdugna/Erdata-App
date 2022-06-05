@@ -1,191 +1,282 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:sec_2/custom_widget/custom_widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sec_2/erdata/blocs/blocs.dart';
+import 'package:sec_2/erdata/models/children_model.dart';
 
+import '../../custom_widget/custom_widgets.dart';
 
-class ChildrenRegistrationScreen extends StatelessWidget {
-  const ChildrenRegistrationScreen({Key? key}) : super(key: key);
+// import '../constant.dart';
 
+class ChildrenRegistrationScreen extends StatefulWidget {
+  static String id = 'registration';
+  @override
+  _ChildrenRegistrationScreenState createState() =>
+      _ChildrenRegistrationScreenState();
+}
+
+class _ChildrenRegistrationScreenState
+    extends State<ChildrenRegistrationScreen> {
+  final _formKey = GlobalKey<FormState>();
+  dynamic validate;
+  String change = 'Register';
+  final Map<String, dynamic> _register = {};
   @override
   Widget build(BuildContext context) {
-    final List<String> gender = [
-      'Female',
-      'Male'
-    ];
-   
-
-    final formKey = GlobalKey<FormState>();
-    final firstnameController = TextEditingController();
-    final lastnameController = TextEditingController();
-
-    final initiativeController = TextEditingController();
-    final imageController = TextEditingController();
-    final birthdateController = TextEditingController();
-    final kebeleController = TextEditingController();
-    final woredaController = TextEditingController();
-    final storyController = TextEditingController();
-    return SafeArea(
-      child: LayoutBuilder(
-        builder: ((context, constraints) => Scaffold(
-              appBar: HeaderBar(
-                title: "",
-                appBar: AppBar(),
-              ),
-              drawer: const DrawerExtends(
-                color: Colors.black,
-              ),
-              body: Padding(
-                padding:
-                    EdgeInsets.only(left: 40, right: 10, top: 20, bottom: 50),
-                child: Form(
-                  key: formKey,
-                  child: ListView(
-                    children: [
-                      SizedBox(height: 40),
-    
-                      TextFormField(
-                          controller: firstnameController,
-                          decoration: InputDecoration(
-                              hintText: "Child Firstname",
-                              border: UnderlineInputBorder()),
-                          validator: (String? firstname) {
-                            if (firstname == null || firstname.isEmpty) {
-                              return "FirstName should not be empty";
-                            }
-                          }),
-                          SizedBox(height: 20),
-                          TextFormField(
-                          controller: lastnameController,
-                          decoration: InputDecoration(
-                              hintText: "Child Lastname",
-                              border: UnderlineInputBorder()),
-                          validator: (String? lastname) {
-                            if (lastname == null || lastname.isEmpty) {
-                              return "Lastname should not be empty";
-                            }
-                          }),
-                      SizedBox(height: 20),
-                      TextFormField(
-                          controller: birthdateController,
-                          decoration: InputDecoration(
-                              hintText: "Date of birth(DD/MM/YY)",
-                              border: UnderlineInputBorder()),
-                          validator: (String? username) {
-                            if (username == null || username.isEmpty) {
-                              return "Birthdate should not be empty";
-                            }
-                          }),
-                      SizedBox(height: 20),
-    
-                      DropdownButtonHideUnderline(
-                        child: DropdownButtonFormField2(
-                          hint: Text(
-                            'Gender',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).hintColor,
-                            ),
-                          ),
-                          items: gender
-                              .map((gender) => DropdownMenuItem<String>(
-                                    value: gender,
-                                    child: Text(
-                                      gender,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ))
-                              .toList(),
-                          onChanged: (value) {},
-                          buttonHeight: 40,
-                          buttonWidth: 140,
-                          itemHeight: 40,
-                        ),
-                      ),
-                     
-                      SizedBox(height: 20),
-    
-                      TextFormField(
-                          controller: kebeleController,
-                          decoration: InputDecoration(
-                              hintText: "Address(kebele)",
-                              border: UnderlineInputBorder()),
-                          validator: (String? kebele) {
-                            if (kebele == null || kebele.isEmpty) {
-                              return "Address(kebele) field mustnot be empty";
-                            }
-                          }),
-                      SizedBox(height: 20),
-                      TextFormField(
-                          controller: woredaController,
-                          decoration: InputDecoration(
-                              hintText: "Address(woreda)",
-                              border: UnderlineInputBorder()),
-                          validator: (String? woreda) {
-                            if (woreda == null || woreda.isEmpty) {
-                              return "Address(kebele) field mustnot be empty";
-                            }
-                          }),
-                      SizedBox(height: 40),
-                      TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          controller: storyController,
-                          decoration: InputDecoration(
-                              hintText: "Child Short Story",
-                              border: UnderlineInputBorder()),
-                          validator: (String? description) {
-                            if (description == null || description.isEmpty) {
-                              return "Short Story should not be empty";
-                            }
-                          }),
-                      // SizedBox(height: 20),
-                      // TextFormField(
-                      //     keyboardType: TextInputType.multiline,
-                      //     maxLines: null,
-                      //     controller: initiativeController,
-                      //     decoration: InputDecoration(
-                      //         hintText: "Your initiative to suggest",
-                      //         border: OutlineInputBorder()),
-                      //     validator: (String? username) {
-                      //       if (username == null || username.isEmpty) {
-                      //         return "Initiative should not be empty";
-                      //       }
-                      //     }),
-    
-                      
-                      SizedBox(height: 20),
-                      TextFormField(
-                          controller: imageController,
-                          decoration: InputDecoration(
-                              hintText: "Upload Image",
-                              border: UnderlineInputBorder()),
-                          validator: (String? username) {
-                            if (username == null || username.isEmpty) {
-                              return "Image should not be empty";
-                            }
-                          }),
-    
-                      SizedBox(height: 20),
-                      
-    
-    
-                      ElevatedButton(
-                        onPressed: () {
-                          final formValid = formKey.currentState!.validate();
-                          if (!formValid) return;
-                        },
-                        child: Text("Save"),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.brown,
-                        ),
-                      )
-                    ],
-                  ),
+    return Scaffold(
+      appBar: HeaderBar(
+        title: "ERDATA USER REGISTRATION",
+        appBar: AppBar(),
+      ),
+      drawer: const DrawerExtends(
+        color: Colors.black,
+      ),
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 22.0,
                 ),
-              ),
-            )),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter first name';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'first name',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["first_name"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please Enter last name';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'last name',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["last_name"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 22.0,
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter gender';
+                      }
+                      var check = value.toString();
+                      print(check);
+                      if ((check.compareTo("male") == 0) ||
+                          (check.compareTo("female") == 0)) {
+                        return null;
+                      }
+                      return 'gender must be "male" or "female"';
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter gender',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["gender"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'enter age';
+                      }
+                      if (double.tryParse(value!) == null) {
+                        return 'The input is not a numeric string';
+                      }
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'age',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["age"] = int.parse(value!);
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'enter description';
+                      }
+                      final validdescription = value!.length > 20;
+                      return validdescription
+                          ? null
+                          : "Desctiption length must be > 20";
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter description',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["description"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter kebele';
+                      }
+
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter kebele',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["kebele"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter woreda';
+                      }
+
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter woreda',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["woreda"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter zone';
+                      }
+
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter zone',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["zone"] = value;
+                      });
+                    }),
+                SizedBox(
+                  height: 24.0,
+                ),
+                TextFormField(
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'please enter region';
+                      }
+
+                      return null;
+                    },
+                    textAlign: TextAlign.center,
+                    decoration: kTextFileDecoration.copyWith(
+                      hintText: 'enter region',
+                    ),
+                    onSaved: (value) {
+                      setState(() {
+                        _register["region"] = value;
+                      });
+                    }),
+                BlocConsumer<ChildrenBloc, ChildrenState>(
+                  listener: (context, state) {
+                    if (state is ChildrenOperationSuccess) {
+                      return context.goNamed("home");
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is ChildrenOperationSuccess) {
+                      change = "succesfully registered";
+                      return Text('');
+                    }
+                    return Text('');
+                  },
+                ),
+                RoundedButton(
+                  onPressed: () {
+                    final form = _formKey.currentState;
+                    if (form != null && form.validate()) {
+                      form.save();
+                      final ChildrenEvent event = ChildrenCreate(Children(
+                        first_name: _register["first_name"],
+                        last_name: _register["last_name"],
+                        gender: _register["gender"],
+                        age: _register["age"],
+                        description: _register["description"],
+                        kebele: _register["kebele"],
+                        woreda: _register["woreda"],
+                        zone: _register["zone"],
+                        region: _register["region"],
+                      ));
+                      BlocProvider.of<ChildrenBloc>(context).add(event);
+                    }
+                  },
+                  text: change,
+                  color: Colors.teal.shade500,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
