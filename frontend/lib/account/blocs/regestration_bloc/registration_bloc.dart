@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../repository/registration_repository.dart';
-import 'blocs.dart';
+import '../../repository/registration_repository.dart';
+import '../blocs.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   final RegistrationRepository registrationRepository;

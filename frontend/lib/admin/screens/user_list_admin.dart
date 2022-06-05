@@ -40,16 +40,20 @@ class UsersList extends StatelessWidget {
                         itemCount: user.length,
                         itemBuilder: (_, int index) {
                           return ListTile(
-                            onTap: (){
+                            onTap: () {
                               context.go(
                                   "/children_list/${user.elementAt(index).id}");
                             },
-                            leading: Image(image: AssetImage("assets/logo3.jpg")),
+                            leading:
+                                Image(image: AssetImage("assets/logo3.jpg")),
                             title: Text(user.elementAt(index).username),
-                            subtitle: Column(children: [
-                              Text("Full Name: ${user.elementAt(index).username} "),
-                              Text("Email: ${user.elementAt(index).email}"), 
-                            ],),
+                            subtitle: Column(
+                              children: [
+                                Text(
+                                    "Username: ${user.elementAt(index).username} "),
+                                Text("Email: ${user.elementAt(index).email}"),
+                              ],
+                            ),
                           );
                         });
                     // return PageView.builder(

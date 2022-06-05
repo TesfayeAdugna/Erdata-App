@@ -37,8 +37,7 @@ class ChildrenList extends StatelessWidget {
                   }
                   if (state is ChildrenOperationSuccess) {
                     final children = state.childrens;
-                    return 
-                     PageView.builder(
+                    return PageView.builder(
                         controller: pageController,
                         scrollDirection: Axis.vertical,
                         itemCount: children.length,
@@ -75,8 +74,8 @@ class ChildrenList extends StatelessWidget {
                                   right: 10,
                                   left: 10,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(left: 30, right: 30),
+                                    margin: const EdgeInsets.only(
+                                        left: 30, right: 30),
                                     width: 300,
                                     height: 270,
                                     decoration: BoxDecoration(
@@ -100,7 +99,8 @@ class ChildrenList extends StatelessWidget {
                                             Text(
                                               "Age: ${children.elementAt(index).age.toString()}",
                                               style: const TextStyle(
-                                                color: Color.fromRGBO(0, 0, 0, 1),
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -149,7 +149,6 @@ class ChildrenList extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            
                           );
                         });
                   }

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../models/registration_model.dart';
+import '../../models/registration_model.dart';
 
 abstract class RegistrationEvent extends Equatable {
 
