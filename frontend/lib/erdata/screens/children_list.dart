@@ -37,11 +37,18 @@ class ChildrenList extends StatelessWidget {
                   }
                   if (state is ChildrenOperationSuccess) {
                     final children = state.childrens;
+                    String img = "assets/profile_image1.jpg";
                     return PageView.builder(
                         controller: pageController,
                         scrollDirection: Axis.vertical,
                         itemCount: children.length,
                         itemBuilder: (_, int index) {
+                          if ("${children.elementAt(index).gender}" ==
+                              "female") {
+                            img = "assets/child_6.jpg";
+                          } else {
+                            img = "assets/child_7.jpg";
+                          }
                           return GestureDetector(
                             onTap: () {
                               context.go(
@@ -61,9 +68,8 @@ class ChildrenList extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: Colors.black,
                                       borderRadius: BorderRadius.circular(50),
-                                      image: const DecorationImage(
-                                        image: AssetImage(
-                                            "assets/profile_image1.jpg"),
+                                      image: DecorationImage(
+                                        image: AssetImage(img),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -80,7 +86,8 @@ class ChildrenList extends StatelessWidget {
                                     height: 270,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius:
+
+borderRadius:
                                             BorderRadius.circular(25)),
                                     child: Center(
                                       child: Container(
@@ -142,7 +149,8 @@ class ChildrenList extends StatelessWidget {
                                               ),
                                             ),
                                           ],
-                                        ),
+
+),
                                       ),
                                     ),
                                   ),
@@ -155,8 +163,7 @@ class ChildrenList extends StatelessWidget {
                   return const Text("Not handled State");
                 },
               ),
-            )
-            ),
+            )),
       ),
     );
   }
