@@ -155,12 +155,8 @@ class ChildrenList extends StatelessWidget {
                   return const Text("Not handled State");
                 },
               ),
-              floatingActionButton: FloatingActionButton(
-                  onPressed: () {
-                    return context.goNamed("child_suggestion");
-                  },
-                  child: const Icon(Icons.add)),
-            )),
+            )
+            ),
       ),
     );
   }

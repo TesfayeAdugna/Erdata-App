@@ -98,7 +98,8 @@ class _HomePageState extends State<HomePage> {
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(25),
                                         child: Image.asset(
-                                          "assets/profile_image1.jpg",
+                                          // "assets/profile_image1.jpg",
+                                          child.Image,
                                           width: 160,
                                           height: 120,
                                           fit: BoxFit.fill,
@@ -137,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(height: 10),
                                       GestureDetector(
                                         onTap: () {
-                                          context.go('/child_detail');
+                                          context.go('/children_list');
                                         },
                                         child: Text(
                                           "\n SEE MORE...",
