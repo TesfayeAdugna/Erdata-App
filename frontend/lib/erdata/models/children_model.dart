@@ -42,7 +42,18 @@ class Children {
         woreda: json["woreda"]);
   }
 
-  // Map<String, dynamic> toJson() {
-  //   return ;
-  // }
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'first_name': first_name,
+        'last_name': last_name,
+        'photos': photos,
+        'gender': gender,
+        'birth_date': birth_date,
+        'description': description,
+        'bank_account': bank_account,
+        'kebele': kebele,
+        'region': region,
+        'zone': zone,
+        'woreda': woreda,
+      };
 }
